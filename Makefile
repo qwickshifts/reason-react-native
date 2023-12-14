@@ -11,10 +11,16 @@ help: ## Print this help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2}';
 	@echo "";
 
+.PHONY: nuke
+nuke: ## Delete all files that will be generated
+	rm $(project_name).opam
+	rm -rf node_modules
+	opam switch remove . -y
+
 .PHONY: create-switch
 create-switch: ## Create opam switch
-	opam switch create . -y --deps-only
-	opam install dune
+	opam switch create . -y --empty
+	opam install dune -y
 
 .PHONY: init
 init: create-switch install ## Configure everything to develop this repository in local

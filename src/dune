@@ -1,5 +1,5 @@
 (library
- (name reasonReactNative)
+ (name reactNative)
  (public_name reason-react-native)
  (modes melange)
  (libraries reason-react)
