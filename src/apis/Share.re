@@ -1,11 +1,11 @@
 type content;
 type options;
 
-[@bs.obj]
+[@mel.obj]
 external content:
   (~title: string=?, ~message: string=?, ~url: string=?, unit) => content;
 
-[@bs.obj]
+[@mel.obj]
 external options:
   (
     ~subject: string=?,
@@ -18,10 +18,10 @@ external options:
 
 type action;
 
-[@bs.module "react-native"] [@bs.scope "Share"]
+[@mel.module "react-native"] [@mel.scope "Share"]
 external sharedAction: action = "sharedAction";
 
-[@bs.module "react-native"] [@bs.scope "Share"]
+[@mel.module "react-native"] [@mel.scope "Share"]
 external dismissedAction: action = "dismissedAction";
 
 type shareResult = {
@@ -30,9 +30,9 @@ type shareResult = {
 };
 
 // multiple externals
-[@bs.module "react-native"] [@bs.scope "Share"]
+[@mel.module "react-native"] [@mel.scope "Share"]
 external share: content => Js.Promise.t(shareResult) = "share";
 
 // multiple externals
-[@bs.module "react-native"] [@bs.scope "Share"]
+[@mel.module "react-native"] [@mel.scope "Share"]
 external shareWithOptions: (content, options) => Js.Promise.t(bool) = "share";

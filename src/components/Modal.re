@@ -23,7 +23,7 @@ type presentationStyle = [
   | `overFullScreen
 ];
 
-[@react.component] [@bs.module "react-native"]
+[@react.component] [@mel.module "react-native"]
 external make:
   (
     ~ref: ref=?,

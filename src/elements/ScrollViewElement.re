@@ -6,8 +6,8 @@ include ScrollViewMethods.Make({
 });
 
 type scrollToParams;
-[@bs.obj]
+[@mel.obj]
 external scrollToParams:
   (~x: float, ~y: float, ~animated: bool=?, ~duration: float=?, unit) =>
   scrollToParams;
-[@bs.send] external scrollTo: (element, scrollToParams) => unit = "scrollTo";
+[@mel.send] external scrollTo: (element, scrollToParams) => unit = "scrollTo";

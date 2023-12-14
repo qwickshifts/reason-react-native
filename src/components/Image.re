@@ -2,7 +2,7 @@ include NativeElement;
 
 type uriSource;
 
-[@bs.obj]
+[@mel.obj]
 external uriSource:
   (
     ~uri: string,
@@ -10,11 +10,11 @@ external uriSource:
     ~method: string=?,
     ~headers: Js.Dict.t(string)=?,
     ~body: string=?,
-    ~cache: [@bs.string] [
+    ~cache: [@mel.string] [
               | `default
               | `reload
-              | [@bs.as "force-cache"] `forceCache
-              | [@bs.as "only-if-cached"] `onlyIfCached
+              | [@mel.as "force-cache"] `forceCache
+              | [@mel.as "only-if-cached"] `onlyIfCached
             ]
               =?,
     ~scale: float=?,
@@ -35,7 +35,7 @@ module Source = {
 module DefaultSource = {
   type t;
 
-  [@bs.obj]
+  [@mel.obj]
   external fromUri:
     (~uri: string, ~scale: float=?, ~width: float=?, ~height: float=?, unit) =>
     t;
@@ -87,7 +87,7 @@ type progressEvent = ProgressEvent.t;
 
 type resizeMethod = [ | `auto | `resize | `scale];
 
-[@react.component] [@bs.module "react-native"]
+[@react.component] [@mel.module "react-native"]
 external make:
   (
     ~ref: ref=?,
@@ -118,7 +118,7 @@ external make:
 
 type sizeError;
 
-[@bs.module "react-native"] [@bs.scope "Image"]
+[@mel.module "react-native"] [@mel.scope "Image"]
 external getSize:
   (
     ~uri: string,
@@ -131,13 +131,13 @@ external getSize:
 
 type requestId;
 
-[@bs.module "react-native"] [@bs.scope "Image"]
+[@mel.module "react-native"] [@mel.scope "Image"]
 external prefetch: (~uri: string) => requestId = "prefetch";
 
-[@bs.module "react-native"] [@bs.scope "Image"]
+[@mel.module "react-native"] [@mel.scope "Image"]
 external abortPrefetch: requestId => unit = "abortPrefetch";
 
-[@bs.module "react-native"] [@bs.scope "Image"]
+[@mel.module "react-native"] [@mel.scope "Image"]
 external queryCache: (~uris: array(string)) => unit = "queryCache";
 
 type asset = {
@@ -146,5 +146,5 @@ type asset = {
   height: float,
 };
 
-[@bs.module "react-native"] [@bs.scope "Image"]
+[@mel.module "react-native"] [@mel.scope "Image"]
 external resolveAssetSource: Source.t => asset = "resolveAssetSource";

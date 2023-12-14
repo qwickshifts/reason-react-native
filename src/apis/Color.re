@@ -6,441 +6,441 @@ let rgba = (~r: int, ~g: int, ~b: int, ~a: float) => {j|rgba($r, $g, $b, $a)|j};
 let hsl = (~h: float, ~s: float, ~l: float) => {j|hsl($h, $s%, $l%)|j};
 let hsla = (~h: float, ~s: float, ~l: float, ~a: float) => {j|hsl($h, $s%, $l%, $a)|j};
 
-[@bs.inline]
+[@mel.inline]
 let transparent = "transparent";
 
 // Pre-defined colors
-[@bs.inline]
+[@mel.inline]
 let aliceblue = "aliceblue";
 
-[@bs.inline]
+[@mel.inline]
 let antiquewhite = "antiquewhite";
 
-[@bs.inline]
+[@mel.inline]
 let aqua = "aqua";
 
-[@bs.inline]
+[@mel.inline]
 let aquamarine = "aquamarine";
 
-[@bs.inline]
+[@mel.inline]
 let azure = "azure";
 
-[@bs.inline]
+[@mel.inline]
 let beige = "beige";
 
-[@bs.inline]
+[@mel.inline]
 let bisque = "bisque";
 
-[@bs.inline]
+[@mel.inline]
 let black = "black";
 
-[@bs.inline]
+[@mel.inline]
 let blanchedalmond = "blanchedalmond";
 
-[@bs.inline]
+[@mel.inline]
 let blue = "blue";
 
-[@bs.inline]
+[@mel.inline]
 let blueviolet = "blueviolet";
 
-[@bs.inline]
+[@mel.inline]
 let brown = "brown";
 
-[@bs.inline]
+[@mel.inline]
 let burlywood = "burlywood";
 
-[@bs.inline]
+[@mel.inline]
 let cadetblue = "cadetblue";
 
-[@bs.inline]
+[@mel.inline]
 let chartreuse = "chartreuse";
 
-[@bs.inline]
+[@mel.inline]
 let chocolate = "chocolate";
 
-[@bs.inline]
+[@mel.inline]
 let coral = "coral";
 
-[@bs.inline]
+[@mel.inline]
 let cornflowerblue = "cornflowerblue";
 
-[@bs.inline]
+[@mel.inline]
 let cornsilk = "cornsilk";
 
-[@bs.inline]
+[@mel.inline]
 let crimson = "crimson";
 
-[@bs.inline]
+[@mel.inline]
 let cyan = "cyan";
 
-[@bs.inline]
+[@mel.inline]
 let darkblue = "darkblue";
 
-[@bs.inline]
+[@mel.inline]
 let darkcyan = "darkcyan";
 
-[@bs.inline]
+[@mel.inline]
 let darkgoldenrod = "darkgoldenrod";
 
-[@bs.inline]
+[@mel.inline]
 let darkgray = "darkgray";
 
-[@bs.inline]
+[@mel.inline]
 let darkgreen = "darkgreen";
 
-[@bs.inline]
+[@mel.inline]
 let darkgrey = "darkgrey";
 
-[@bs.inline]
+[@mel.inline]
 let darkkhaki = "darkkhaki";
 
-[@bs.inline]
+[@mel.inline]
 let darkmagenta = "darkmagenta";
 
-[@bs.inline]
+[@mel.inline]
 let darkolivegreen = "darkolivegreen";
 
-[@bs.inline]
+[@mel.inline]
 let darkorange = "darkorange";
 
-[@bs.inline]
+[@mel.inline]
 let darkorchid = "darkorchid";
 
-[@bs.inline]
+[@mel.inline]
 let darkred = "darkred";
 
-[@bs.inline]
+[@mel.inline]
 let darksalmon = "darksalmon";
 
-[@bs.inline]
+[@mel.inline]
 let darkseagreen = "darkseagreen";
 
-[@bs.inline]
+[@mel.inline]
 let darkslateblue = "darkslateblue";
 
-[@bs.inline]
+[@mel.inline]
 let darkslategrey = "darkslategrey";
 
-[@bs.inline]
+[@mel.inline]
 let darkturquoise = "darkturquoise";
 
-[@bs.inline]
+[@mel.inline]
 let darkviolet = "darkviolet";
 
-[@bs.inline]
+[@mel.inline]
 let deeppink = "deeppink";
 
-[@bs.inline]
+[@mel.inline]
 let deepskyblue = "deepskyblue";
 
-[@bs.inline]
+[@mel.inline]
 let dimgray = "dimgray";
 
-[@bs.inline]
+[@mel.inline]
 let dimgrey = "dimgrey";
 
-[@bs.inline]
+[@mel.inline]
 let dodgerblue = "dodgerblue";
 
-[@bs.inline]
+[@mel.inline]
 let firebrick = "firebrick";
 
-[@bs.inline]
+[@mel.inline]
 let floralwhite = "floralwhite";
 
-[@bs.inline]
+[@mel.inline]
 let forestgreen = "forestgreen";
 
-[@bs.inline]
+[@mel.inline]
 let fuchsia = "fuchsia";
 
-[@bs.inline]
+[@mel.inline]
 let gainsboro = "gainsboro";
 
-[@bs.inline]
+[@mel.inline]
 let ghostwhite = "ghostwhite";
 
-[@bs.inline]
+[@mel.inline]
 let gold = "gold";
 
-[@bs.inline]
+[@mel.inline]
 let goldenrod = "goldenrod";
 
-[@bs.inline]
+[@mel.inline]
 let gray = "gray";
 
-[@bs.inline]
+[@mel.inline]
 let green = "green";
 
-[@bs.inline]
+[@mel.inline]
 let greenyellow = "greenyellow";
 
-[@bs.inline]
+[@mel.inline]
 let grey = "grey";
 
-[@bs.inline]
+[@mel.inline]
 let honeydew = "honeydew";
 
-[@bs.inline]
+[@mel.inline]
 let hotpink = "hotpink";
 
-[@bs.inline]
+[@mel.inline]
 let indianred = "indianred";
 
-[@bs.inline]
+[@mel.inline]
 let indigo = "indigo";
 
-[@bs.inline]
+[@mel.inline]
 let ivory = "ivory";
 
-[@bs.inline]
+[@mel.inline]
 let khaki = "khaki";
 
-[@bs.inline]
+[@mel.inline]
 let lavender = "lavender";
 
-[@bs.inline]
+[@mel.inline]
 let lavenderblush = "lavenderblush";
 
-[@bs.inline]
+[@mel.inline]
 let lawngreen = "lawngreen";
 
-[@bs.inline]
+[@mel.inline]
 let lemonchiffon = "lemonchiffon";
 
-[@bs.inline]
+[@mel.inline]
 let lightblue = "lightblue";
 
-[@bs.inline]
+[@mel.inline]
 let lightcoral = "lightcoral";
 
-[@bs.inline]
+[@mel.inline]
 let lightcyan = "lightcyan";
 
-[@bs.inline]
+[@mel.inline]
 let lightgoldenrodyellow = "lightgoldenrodyellow";
 
-[@bs.inline]
+[@mel.inline]
 let lightgray = "lightgray";
 
-[@bs.inline]
+[@mel.inline]
 let lightgreen = "lightgreen";
 
-[@bs.inline]
+[@mel.inline]
 let lightgrey = "lightgrey";
 
-[@bs.inline]
+[@mel.inline]
 let lightpink = "lightpink";
 
-[@bs.inline]
+[@mel.inline]
 let lightsalmon = "lightsalmon";
 
-[@bs.inline]
+[@mel.inline]
 let lightseagreen = "lightseagreen";
 
-[@bs.inline]
+[@mel.inline]
 let lightskyblue = "lightskyblue";
 
-[@bs.inline]
+[@mel.inline]
 let lightslategrey = "lightslategrey";
 
-[@bs.inline]
+[@mel.inline]
 let lightsteelblue = "lightsteelblue";
 
-[@bs.inline]
+[@mel.inline]
 let lightyellow = "lightyellow";
 
-[@bs.inline]
+[@mel.inline]
 let lime = "lime";
 
-[@bs.inline]
+[@mel.inline]
 let limegreen = "limegreen";
 
-[@bs.inline]
+[@mel.inline]
 let linen = "linen";
 
-[@bs.inline]
+[@mel.inline]
 let magenta = "magenta";
 
-[@bs.inline]
+[@mel.inline]
 let maroon = "maroon";
 
-[@bs.inline]
+[@mel.inline]
 let mediumaquamarine = "mediumaquamarine";
 
-[@bs.inline]
+[@mel.inline]
 let mediumblue = "mediumblue";
 
-[@bs.inline]
+[@mel.inline]
 let mediumorchid = "mediumorchid";
 
-[@bs.inline]
+[@mel.inline]
 let mediumpurple = "mediumpurple";
 
-[@bs.inline]
+[@mel.inline]
 let mediumseagreen = "mediumseagreen";
 
-[@bs.inline]
+[@mel.inline]
 let mediumslateblue = "mediumslateblue";
 
-[@bs.inline]
+[@mel.inline]
 let mediumspringgreen = "mediumspringgreen";
 
-[@bs.inline]
+[@mel.inline]
 let mediumturquoise = "mediumturquoise";
 
-[@bs.inline]
+[@mel.inline]
 let mediumvioletred = "mediumvioletred";
 
-[@bs.inline]
+[@mel.inline]
 let midnightblue = "midnightblue";
 
-[@bs.inline]
+[@mel.inline]
 let mintcream = "mintcream";
 
-[@bs.inline]
+[@mel.inline]
 let mistyrose = "mistyrose";
 
-[@bs.inline]
+[@mel.inline]
 let moccasin = "moccasin";
 
-[@bs.inline]
+[@mel.inline]
 let navajowhite = "navajowhite";
 
-[@bs.inline]
+[@mel.inline]
 let navy = "navy";
 
-[@bs.inline]
+[@mel.inline]
 let oldlace = "oldlace";
 
-[@bs.inline]
+[@mel.inline]
 let olive = "olive";
 
-[@bs.inline]
+[@mel.inline]
 let olivedrab = "olivedrab";
 
-[@bs.inline]
+[@mel.inline]
 let orange = "orange";
 
-[@bs.inline]
+[@mel.inline]
 let orangered = "orangered";
 
-[@bs.inline]
+[@mel.inline]
 let orchid = "orchid";
 
-[@bs.inline]
+[@mel.inline]
 let palegoldenrod = "palegoldenrod";
 
-[@bs.inline]
+[@mel.inline]
 let palegreen = "palegreen";
 
-[@bs.inline]
+[@mel.inline]
 let paleturquoise = "paleturquoise";
 
-[@bs.inline]
+[@mel.inline]
 let palevioletred = "palevioletred";
 
-[@bs.inline]
+[@mel.inline]
 let papayawhip = "papayawhip";
 
-[@bs.inline]
+[@mel.inline]
 let peachpuff = "peachpuff";
 
-[@bs.inline]
+[@mel.inline]
 let peru = "peru";
 
-[@bs.inline]
+[@mel.inline]
 let pink = "pink";
 
-[@bs.inline]
+[@mel.inline]
 let plum = "plum";
 
-[@bs.inline]
+[@mel.inline]
 let powderblue = "powderblue";
 
-[@bs.inline]
+[@mel.inline]
 let purple = "purple";
 
-[@bs.inline]
+[@mel.inline]
 let rebeccapurple = "rebeccapurple";
 
-[@bs.inline]
+[@mel.inline]
 let red = "red";
 
-[@bs.inline]
+[@mel.inline]
 let rosybrown = "rosybrown";
 
-[@bs.inline]
+[@mel.inline]
 let royalblue = "royalblue";
 
-[@bs.inline]
+[@mel.inline]
 let saddlebrown = "saddlebrown";
 
-[@bs.inline]
+[@mel.inline]
 let salmon = "salmon";
 
-[@bs.inline]
+[@mel.inline]
 let sandybrown = "sandybrown";
 
-[@bs.inline]
+[@mel.inline]
 let seagreen = "seagreen";
 
-[@bs.inline]
+[@mel.inline]
 let seashell = "seashell";
 
-[@bs.inline]
+[@mel.inline]
 let sienna = "sienna";
 
-[@bs.inline]
+[@mel.inline]
 let silver = "silver";
 
-[@bs.inline]
+[@mel.inline]
 let skyblue = "skyblue";
 
-[@bs.inline]
+[@mel.inline]
 let slateblue = "slateblue";
 
-[@bs.inline]
+[@mel.inline]
 let slategray = "slategray";
 
-[@bs.inline]
+[@mel.inline]
 let snow = "snow";
 
-[@bs.inline]
+[@mel.inline]
 let springgreen = "springgreen";
 
-[@bs.inline]
+[@mel.inline]
 let steelblue = "steelblue";
 
-[@bs.inline]
+[@mel.inline]
 let tan = "tan";
 
-[@bs.inline]
+[@mel.inline]
 let teal = "teal";
 
-[@bs.inline]
+[@mel.inline]
 let thistle = "thistle";
 
-[@bs.inline]
+[@mel.inline]
 let tomato = "tomato";
 
-[@bs.inline]
+[@mel.inline]
 let turquoise = "turquoise";
 
-[@bs.inline]
+[@mel.inline]
 let violet = "violet";
 
-[@bs.inline]
+[@mel.inline]
 let wheat = "wheat";
 
-[@bs.inline]
+[@mel.inline]
 let white = "white";
 
-[@bs.inline]
+[@mel.inline]
 let whitesmoke = "whitesmoke";
 
-[@bs.inline]
+[@mel.inline]
 let yellow = "yellow";
 
-[@bs.inline]
+[@mel.inline]
 let yellowgreen = "yellowgreen";

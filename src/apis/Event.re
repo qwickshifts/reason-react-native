@@ -3,31 +3,31 @@
 type registrationName = {registrationName: string};
 
 module EventMethods = (T: {type event;}) => {
-  [@bs.get] [@bs.return nullable]
+  [@mel.get] [@mel.return nullable]
   external bubbles: T.event => option(bool) = "bubbles";
-  [@bs.get] [@bs.return nullable]
+  [@mel.get] [@mel.return nullable]
   external cancelable: T.event => option(bool) = "cancelable";
-  [@bs.get] external currentTarget: T.event => float = "currentTarget";
-  [@bs.get] [@bs.return nullable]
+  [@mel.get] external currentTarget: T.event => float = "currentTarget";
+  [@mel.get] [@mel.return nullable]
   external defaultPrevented: T.event => option(bool) = "defaultPrevented";
-  [@bs.get]
+  [@mel.get]
   external dispatchConfig: T.event => registrationName = "dispatchConfig";
-  [@bs.get] [@bs.return nullable]
+  [@mel.get] [@mel.return nullable]
   external eventPhase: T.event => option(float) = "eventPhase";
-  [@bs.send] external preventDefault: T.event => unit = "preventDefault";
-  [@bs.send]
+  [@mel.send] external preventDefault: T.event => unit = "preventDefault";
+  [@mel.send]
   external isDefaultPrevented: T.event => bool = "isDefaultPrevented";
-  [@bs.send] external stopPropagation: T.event => unit = "stopPropagation";
-  [@bs.send]
+  [@mel.send] external stopPropagation: T.event => unit = "stopPropagation";
+  [@mel.send]
   external isPropagationStopped: T.event => bool = "isPropagationStopped";
-  [@bs.get] [@bs.return nullable]
+  [@mel.get] [@mel.return nullable]
   external isTrusted: T.event => option(bool) = "isTrusted";
-  [@bs.get] external nativeEvent: T.event => 'a = "nativeEvent";
-  [@bs.send] external persist: T.event => unit = "persist";
-  [@bs.get] [@bs.return nullable]
+  [@mel.get] external nativeEvent: T.event => 'a = "nativeEvent";
+  [@mel.send] external persist: T.event => unit = "persist";
+  [@mel.get] [@mel.return nullable]
   external target: T.event => option(float) = "target";
-  [@bs.get] external timeStamp: T.event => float = "timeStamp";
-  [@bs.get] [@bs.return nullable]
+  [@mel.get] external timeStamp: T.event => float = "timeStamp";
+  [@mel.get] [@mel.return nullable]
   external _type: T.event => option(string) = "type";
 };
 
@@ -43,7 +43,7 @@ module SyntheticEvent = (T: {type _payload;}) => {
     nativeEvent: T._payload,
     target: Js.Nullable.t(float),
     timeStamp: float,
-    [@bs.as "type"]
+    [@mel.as "type"]
     _type: Js.Nullable.t(string),
   };
 
@@ -84,7 +84,7 @@ module ResponderSyntheticEvent = (T: {type _payload;}) => {
     nativeEvent: T._payload,
     target: Js.Nullable.t(float),
     timeStamp: float,
-    [@bs.as "type"]
+    [@mel.as "type"]
     _type: Js.Nullable.t(string),
     touchHistory,
   };
@@ -93,7 +93,7 @@ module ResponderSyntheticEvent = (T: {type _payload;}) => {
     type event = t;
   });
 
-  [@bs.get] external touchHistory: t => touchHistory = "touchHistory";
+  [@mel.get] external touchHistory: t => touchHistory = "touchHistory";
 };
 
 module LayoutEvent = {

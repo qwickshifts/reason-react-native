@@ -1,0 +1,9 @@
+(library
+ (name reasonReactNative)
+ (public_name reason-react-native)
+ (modes melange)
+ (libraries reason-react)
+ (preprocess
+  (pps melange.ppx)))
+
+(include_subdirs unqualified)

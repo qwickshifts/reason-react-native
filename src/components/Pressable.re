@@ -2,7 +2,7 @@ include NativeElement;
 
 type rippleConfig;
 
-[@bs.obj]
+[@mel.obj]
 external rippleConfig:
   (~color: Color.t=?, ~borderless: bool=?, ~radius: float=?, unit) =>
   rippleConfig;
@@ -14,7 +14,7 @@ type interactionState = {
   focused: option(bool),
 };
 
-[@react.component] [@bs.module "react-native"]
+[@react.component] [@mel.module "react-native"]
 external make:
   (
     ~ref: ref=?,
@@ -31,11 +31,11 @@ external make:
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
     ~focusable: bool=?,
-    ~importantForAccessibility: [@bs.string] [
+    ~importantForAccessibility: [@mel.string] [
                                   | `auto
                                   | `yes
                                   | `no
-                                  | [@bs.as "no-hide-descendants"]
+                                  | [@mel.as "no-hide-descendants"]
                                     `noHideDescendants
                                 ]
                                   =?,
@@ -56,10 +56,10 @@ external make:
     ~testID: string=?,
     ~testOnly_pressed: bool=?,
     // React Native Web Props
-    ~rel: [@bs.string] [
+    ~rel: [@mel.string] [
             | `alternate
             | `author
-            | [@bs.as "dns-prefetch"] `dnsPrefetch
+            | [@mel.as "dns-prefetch"] `dnsPrefetch
             | `icon
             | `license
             | `next

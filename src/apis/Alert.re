@@ -1,6 +1,6 @@
 type options;
 
-[@bs.obj]
+[@mel.obj]
 external options:
   (~cancelable: bool=?, ~onDismiss: unit => unit=?, unit) => options;
 
@@ -8,11 +8,11 @@ type button;
 
 type style = [ | `default | `cancel | `destructive];
 
-[@bs.obj]
+[@mel.obj]
 external button:
   (~text: string=?, ~onPress: unit => unit=?, ~style: style=?, unit) => button;
 
-[@bs.scope "Alert"] [@bs.module "react-native"]
+[@mel.scope "Alert"] [@mel.module "react-native"]
 external alert:
   (
     ~title: string,
@@ -24,21 +24,21 @@ external alert:
   unit =
   "alert";
 
-[@bs.scope "Alert"] [@bs.module "react-native"]
+[@mel.scope "Alert"] [@mel.module "react-native"]
 external prompt:
   (
     ~title: string,
     ~message: string=?,
-    ~callbackOrButtons: [@bs.unwrap] [
+    ~callbackOrButtons: [@mel.unwrap] [
                           | `callback(string => unit)
                           | `buttons(array(button))
                         ]
                           =?,
-    ~type_: [@bs.string] [
+    ~type_: [@mel.string] [
               | `default
-              | [@bs.as "plain-text"] `plainText
-              | [@bs.as "secure-text"] `secureText
-              | [@bs.as "login-password"] `loginPassword
+              | [@mel.as "plain-text"] `plainText
+              | [@mel.as "secure-text"] `secureText
+              | [@mel.as "login-password"] `loginPassword
             ]
               =?,
     ~defaultValue: string=?,

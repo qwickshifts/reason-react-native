@@ -1,16 +1,16 @@
 type t;
 
-[@bs.inline "small-caps"]
+[@mel.inline "small-caps"]
 let smallCaps: t;
 
-[@bs.inline "oldstyle-nums"]
+[@mel.inline "oldstyle-nums"]
 let oldstyleNums: t;
 
-[@bs.inline "lining-nums"]
+[@mel.inline "lining-nums"]
 let liningNums: t;
 
-[@bs.inline "tabular-nums"]
+[@mel.inline "tabular-nums"]
 let tabularNums: t;
 
-[@bs.inline "proportional-nums"]
+[@mel.inline "proportional-nums"]
 let proportionalNums: t;

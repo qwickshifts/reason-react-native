@@ -2,20 +2,20 @@ type t;
 
 type subscription;
 
-[@bs.new] [@bs.module "react-native"]
+[@mel.new] [@mel.module "react-native"]
 external make: 'nativeModule => t = "NativeEventEmitter";
 
-[@bs.send]
+[@mel.send]
 external addListener: (t, string, 'a => unit) => subscription = "addListener";
 
-[@bs.send]
+[@mel.send]
 external removeAllListeners: (t, string) => unit = "removeAllListeners";
 
-[@bs.send]
+[@mel.send]
 external removeSubscription: (t, subscription) => unit = "removeSubscription";
 
-[@bs.send] external listenerCount: (t, string) => unit = "listenerCount";
+[@mel.send] external listenerCount: (t, string) => unit = "listenerCount";
 
 module Subscription = {
-  [@bs.send] external remove: (subscription, unit) => unit = "remove";
+  [@mel.send] external remove: (subscription, unit) => unit = "remove";
 };

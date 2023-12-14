@@ -1,14 +1,14 @@
 include VirtualizedSectionListElement;
 
-[@bs.send]
+[@mel.send]
 external flashScrollIndicators: element => unit = "flashScrollIndicators";
 
-[@bs.send] external recordInteraction: element => unit = "recordInteraction";
+[@mel.send] external recordInteraction: element => unit = "recordInteraction";
 
-[@bs.send]
+[@mel.send]
 external setNativeProps: (element, Js.t('a)) => unit = "setNativeProps";
 
-[@react.component] [@bs.module "react-native"]
+[@react.component] [@mel.module "react-native"]
 external make:
   (
     ~ref: ref=?,
@@ -101,10 +101,10 @@ external make:
     ~fadingEdgeLength: float=?,
     ~horizontal: bool=?,
     ~indicatorStyle: ScrollView.indicatorStyle=?,
-    ~keyboardDismissMode: [@bs.string] [
+    ~keyboardDismissMode: [@mel.string] [
                             | `none
                             | `interactive
-                            | [@bs.as "on-drag"] `onDrag
+                            | [@mel.as "on-drag"] `onDrag
                           ]
                             =?,
     ~keyboardShouldPersistTaps: ScrollView.keyboardShouldPersistTaps=?,
@@ -150,11 +150,11 @@ external make:
     ~accessible: bool=?,
     ~collapsable: bool=?,
     ~hitSlop: View.edgeInsets=?,
-    ~importantForAccessibility: [@bs.string] [
+    ~importantForAccessibility: [@mel.string] [
                                   | `auto
                                   | `yes
                                   | `no
-                                  | [@bs.as "no-hide-descendants"]
+                                  | [@mel.as "no-hide-descendants"]
                                     `noHideDescendants
                                 ]
                                   =?,
@@ -178,11 +178,11 @@ external make:
     ~onResponderTerminationRequest: Event.pressEvent => bool=?,
     ~onStartShouldSetResponder: Event.pressEvent => bool=?,
     ~onStartShouldSetResponderCapture: Event.pressEvent => bool=?,
-    ~pointerEvents: [@bs.string] [
+    ~pointerEvents: [@mel.string] [
                       | `auto
                       | `none
-                      | [@bs.as "box-none"] `boxNone
-                      | [@bs.as "box-only"] `boxOnly
+                      | [@mel.as "box-none"] `boxNone
+                      | [@mel.as "box-only"] `boxOnly
                     ]
                       =?,
     ~removeClippedSubviews: bool=?,

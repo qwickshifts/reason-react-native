@@ -1,15 +1,15 @@
 type os = string;
 
-[@bs.module "react-native"] [@bs.scope "Platform"] external os: os = "OS";
+[@mel.module "react-native"] [@mel.scope "Platform"] external os: os = "OS";
 
-[@bs.inline]
+[@mel.inline]
 let ios = "ios";
 
-[@bs.inline]
+[@mel.inline]
 let android = "android";
 
 // react-native-web
-[@bs.inline]
+[@mel.inline]
 let web = "web";
 
 external unsafe: string => os = "%identity";

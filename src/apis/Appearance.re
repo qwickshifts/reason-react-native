@@ -1,7 +1,7 @@
 type t = [ | `dark | `light];
 
-[@bs.scope "Appearance"] [@bs.module "react-native"]
+[@mel.scope "Appearance"] [@mel.module "react-native"]
 external getColorScheme: unit => Js.Null.t(t) = "getColorScheme";
 
-[@bs.module "react-native"]
+[@mel.module "react-native"]
 external useColorScheme: unit => Js.Null.t(t) = "useColorScheme";

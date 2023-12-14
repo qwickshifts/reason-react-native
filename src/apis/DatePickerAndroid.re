@@ -9,7 +9,7 @@ external timestamp: float => date = "%identity";
 
 type mode = [ | `calendar | `spinner | `default];
 
-[@bs.obj]
+[@mel.obj]
 external options:
   (~date: date=?, ~minDate: date=?, ~maxDate: date=?, ~mode: mode=?, unit) =>
   options;
@@ -21,11 +21,11 @@ type response = {
   day: int,
 };
 
-[@bs.module "react-native"] [@bs.scope "DatePickerAndroid"]
+[@mel.module "react-native"] [@mel.scope "DatePickerAndroid"]
 external open_: options => Js.Promise.t(response) = "open";
 
-[@bs.module "react-native"] [@bs.scope "DatePickerAndroid"]
+[@mel.module "react-native"] [@mel.scope "DatePickerAndroid"]
 external dateSetAction: action = "dateSetAction";
 
-[@bs.module "react-native"] [@bs.scope "DatePickerAndroid"]
+[@mel.module "react-native"] [@mel.scope "DatePickerAndroid"]
 external dismissedAction: action = "dismissedAction";

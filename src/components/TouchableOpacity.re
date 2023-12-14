@@ -1,6 +1,6 @@
 include TouchableOpacityElement;
 
-[@react.component] [@bs.module "react-native"]
+[@react.component] [@mel.module "react-native"]
 external make:
   (
     ~ref: ref=?,
@@ -25,11 +25,11 @@ external make:
     ~delayPressOut: int=?,
     ~disabled: bool=?,
     ~hitSlop: View.edgeInsets=?,
-    ~importantForAccessibility: [@bs.string] [
+    ~importantForAccessibility: [@mel.string] [
                                   | `auto
                                   | `yes
                                   | `no
-                                  | [@bs.as "no-hide-descendants"]
+                                  | [@mel.as "no-hide-descendants"]
                                     `noHideDescendants
                                 ]
                                   =?,
@@ -43,10 +43,10 @@ external make:
     ~touchSoundDisabled: bool=?,
     ~children: React.element=?,
     // React Native Web Props
-    ~rel: [@bs.string] [
+    ~rel: [@mel.string] [
             | `alternate
             | `author
-            | [@bs.as "dns-prefetch"] `dnsPrefetch
+            | [@mel.as "dns-prefetch"] `dnsPrefetch
             | `icon
             | `license
             | `next

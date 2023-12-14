@@ -15,3 +15,7 @@ package-lock.json
 **/lib/bs
 **/lib/ocaml
 **/.merlin
+
+_opam
+_build
+.vscode

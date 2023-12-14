@@ -1,16 +1,16 @@
 type t;
 
-[@bs.inline "landscape"]
+[@mel.inline "landscape"]
 let landscape: t;
 
-[@bs.inline "landscape-left"]
+[@mel.inline "landscape-left"]
 let landscapeLeft: t;
 
-[@bs.inline "landscape-right"]
+[@mel.inline "landscape-right"]
 let landscapeRight: t;
 
-[@bs.inline "portrait"]
+[@mel.inline "portrait"]
 let portrait: t;
 
-[@bs.inline "portrait-upside-down"]
+[@mel.inline "portrait-upside-down"]
 let portraitUpsideDown: t;

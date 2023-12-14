@@ -1,6 +1,6 @@
 type parallax;
 
-[@bs.obj]
+[@mel.obj]
 external parallax:
   (
     ~shiftDistanceX: float,

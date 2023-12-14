@@ -1,6 +1,6 @@
 module Make = (T: {type t;}) => {
   type scrollToLocationParams;
-  [@bs.obj]
+  [@mel.obj]
   external scrollToLocationParams:
     (
       ~animated: bool=?,
@@ -12,7 +12,7 @@ module Make = (T: {type t;}) => {
     ) =>
     scrollToLocationParams;
 
-  [@bs.send]
+  [@mel.send]
   external scrollToLocation: (T.t, scrollToLocationParams) => unit =
     "scrollToLocation";
 };

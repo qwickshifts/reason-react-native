@@ -24,15 +24,15 @@ type keyboardEvent = {
 
 type listener = keyboardEvent => unit;
 
-[@bs.module "react-native"] [@bs.scope "Keyboard"]
+[@mel.module "react-native"] [@mel.scope "Keyboard"]
 external addListener: (eventType, listener) => EventSubscription.t =
   "addListener";
 
-[@bs.module "react-native"] [@bs.scope "Keyboard"]
+[@mel.module "react-native"] [@mel.scope "Keyboard"]
 external removeAllListeners: eventType => unit = "removeAllListeners";
 
-[@bs.module "react-native"] [@bs.scope "Keyboard"]
+[@mel.module "react-native"] [@mel.scope "Keyboard"]
 external removeListener: (eventType, listener) => unit = "removeListener";
 
-[@bs.module "react-native"] [@bs.scope "Keyboard"]
+[@mel.module "react-native"] [@mel.scope "Keyboard"]
 external dismiss: unit => unit = "dismiss";

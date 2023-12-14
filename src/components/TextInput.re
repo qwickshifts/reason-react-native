@@ -61,7 +61,7 @@ type scrollEvent = ScrollEvent.t;
 
 type selection = {
   start: int,
-  [@bs.as "end"]
+  [@mel.as "end"]
   _end: int,
 };
 
@@ -139,37 +139,37 @@ type textContentType = [
   | `oneTimeCode
 ];
 
-[@react.component] [@bs.module "react-native"]
+[@react.component] [@mel.module "react-native"]
 external make:
   (
     ~ref: ref=?,
     // TextInput props
     ~allowFontScaling: bool=?,
     ~autoCapitalize: autoCapitalize=?,
-    ~autoCompleteType: [@bs.string] [
+    ~autoCompleteType: [@mel.string] [
                          | `off
                          | `username
                          | `password
                          | `email
                          | `name
                          | `tel
-                         | [@bs.as "street-address"] `streetAddress
-                         | [@bs.as "postal-code"] `postalCode
-                         | [@bs.as "cc-number"] `ccNumber
-                         | [@bs.as "cc-csc"] `ccCsc
-                         | [@bs.as "cc-exp"] `ccExp
-                         | [@bs.as "cc-exp-month"] `ccExpMonth
-                         | [@bs.as "cc-exp-year"] `ccExpYear
+                         | [@mel.as "street-address"] `streetAddress
+                         | [@mel.as "postal-code"] `postalCode
+                         | [@mel.as "cc-number"] `ccNumber
+                         | [@mel.as "cc-csc"] `ccCsc
+                         | [@mel.as "cc-exp"] `ccExp
+                         | [@mel.as "cc-exp-month"] `ccExpMonth
+                         | [@mel.as "cc-exp-year"] `ccExpYear
                        ]
                          =?,
     ~autoCorrect: bool=?,
     ~autoFocus: bool=?,
     ~blurOnSubmit: bool=?,
     ~caretHidden: bool=?,
-    ~clearButtonMode: [@bs.string] [
+    ~clearButtonMode: [@mel.string] [
                         | `never
-                        | [@bs.as "while-editing"] `whileEditing
-                        | [@bs.as "unless-editing"] `unlessEditing
+                        | [@mel.as "while-editing"] `whileEditing
+                        | [@mel.as "unless-editing"] `unlessEditing
                         | `always
                       ]
                         =?,
@@ -184,21 +184,21 @@ external make:
     ~inlineImagePadding: float=?,
     ~inputAccessoryViewID: string=?,
     ~keyboardAppearance: keyboardAppearance=?,
-    ~keyboardType: [@bs.string] [
+    ~keyboardType: [@mel.string] [
                      | `default
-                     | [@bs.as "number-pad"] `numberPad
-                     | [@bs.as "decimal-pad"] `decimalPad
+                     | [@mel.as "number-pad"] `numberPad
+                     | [@mel.as "decimal-pad"] `decimalPad
                      | `numeric
-                     | [@bs.as "email-address"] `emailAddress
-                     | [@bs.as "phone-pad"] `phonePad
-                     | [@bs.as "ascii-capable"] `asciiCapable
-                     | [@bs.as "numbers-and-punctuation"]
+                     | [@mel.as "email-address"] `emailAddress
+                     | [@mel.as "phone-pad"] `phonePad
+                     | [@mel.as "ascii-capable"] `asciiCapable
+                     | [@mel.as "numbers-and-punctuation"]
                        `numbersAndPunctuation
                      | `url
-                     | [@bs.as "name-phone-pad"] `namePhonePad
+                     | [@mel.as "name-phone-pad"] `namePhonePad
                      | `twitter
-                     | [@bs.as "web-search"] `webSearch
-                     | [@bs.as "visible-password"] `visiblePassword
+                     | [@mel.as "web-search"] `webSearch
+                     | [@mel.as "visible-password"] `visiblePassword
                    ]
                      =?,
     ~maxFontSizeMultiplier: float=?,
@@ -220,8 +220,8 @@ external make:
     ~placeholder: string=?,
     ~placeholderTextColor: Color.t=?,
     ~returnKeyLabel: string=?,
-    ~returnKeyType: [@bs.string] [
-                      | [@bs.as "done"] `done_
+    ~returnKeyType: [@mel.string] [
+                      | [@mel.as "done"] `done_
                       | `go
                       | `next
                       | `search
@@ -229,7 +229,7 @@ external make:
                       | `none
                       | `previous
                       | `default
-                      | [@bs.as "emergency-call"] `emergencyCall
+                      | [@mel.as "emergency-call"] `emergencyCall
                       | `google
                       | `join
                       | `route
@@ -262,11 +262,11 @@ external make:
     ~accessible: bool=?,
     ~collapsable: bool=?,
     ~hitSlop: View.edgeInsets=?,
-    ~importantForAccessibility: [@bs.string] [
+    ~importantForAccessibility: [@mel.string] [
                                   | `auto
                                   | `yes
                                   | `no
-                                  | [@bs.as "no-hide-descendants"]
+                                  | [@mel.as "no-hide-descendants"]
                                     `noHideDescendants
                                 ]
                                   =?,
@@ -290,11 +290,11 @@ external make:
     ~onResponderTerminationRequest: Event.pressEvent => bool=?,
     ~onStartShouldSetResponder: Event.pressEvent => bool=?,
     ~onStartShouldSetResponderCapture: Event.pressEvent => bool=?,
-    ~pointerEvents: [@bs.string] [
+    ~pointerEvents: [@mel.string] [
                       | `auto
                       | `none
-                      | [@bs.as "box-none"] `boxNone
-                      | [@bs.as "box-only"] `boxOnly
+                      | [@mel.as "box-none"] `boxNone
+                      | [@mel.as "box-only"] `boxOnly
                     ]
                       =?,
     ~removeClippedSubviews: bool=?,

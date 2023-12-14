@@ -2,11 +2,11 @@ module Animation = {
   type t;
   type endResult = {finished: bool};
   type endCallback = endResult => unit;
-  [@bs.send]
+  [@mel.send]
   external start: (t, ~endCallback: endCallback=?, unit) => unit = "start";
 
-  [@bs.send] external stop: t => unit = "stop";
-  [@bs.send] external reset: t => unit = "reset";
+  [@mel.send] external stop: t => unit = "stop";
+  [@mel.send] external reset: t => unit = "reset";
 };
 
 module type Value = {
@@ -25,7 +25,7 @@ module ValueAnimations = (Val: Value) => {
   module Decay = {
     type config;
 
-    [@bs.obj]
+    [@mel.obj]
     external config:
       (
         ~velocity: Val.rawValue,
@@ -38,7 +38,7 @@ module ValueAnimations = (Val: Value) => {
       ) =>
       config;
 
-    [@bs.module "react-native"] [@bs.scope "Animated"]
+    [@mel.module "react-native"] [@mel.scope "Animated"]
     external decay: (Val.t, config) => Animation.t = "decay";
   };
 
@@ -49,7 +49,7 @@ module ValueAnimations = (Val: Value) => {
 
     type config;
 
-    [@bs.obj]
+    [@mel.obj]
     external config:
       (
         ~toValue: toValue,
@@ -73,7 +73,7 @@ module ValueAnimations = (Val: Value) => {
       ) =>
       config;
 
-    [@bs.module "react-native"] [@bs.scope "Animated"]
+    [@mel.module "react-native"] [@mel.scope "Animated"]
     external spring: (Val.t, config) => Animation.t = "spring";
   };
 
@@ -85,7 +85,7 @@ module ValueAnimations = (Val: Value) => {
 
     type config;
 
-    [@bs.obj]
+    [@mel.obj]
     external config:
       (
         ~toValue: toValue,
@@ -100,7 +100,7 @@ module ValueAnimations = (Val: Value) => {
       ) =>
       config;
 
-    [@bs.module "react-native"] [@bs.scope "Animated"]
+    [@mel.module "react-native"] [@mel.scope "Animated"]
     external timing: (Val.t, config) => Animation.t = "timing";
   };
 };
@@ -114,7 +114,7 @@ module Interpolation = {
   type extrapolate = [ | `extend | `clamp | `identity];
 
   type config;
-  [@bs.obj]
+  [@mel.obj]
   external config:
     (
       ~inputRange: array(float),
@@ -126,23 +126,23 @@ module Interpolation = {
       unit
     ) =>
     config;
-  [@bs.send] external interpolate: (value('a), config) => t = "interpolate";
+  [@mel.send] external interpolate: (value('a), config) => t = "interpolate";
 };
 
 module ValueOperations = {
-  [@bs.module "react-native"] [@bs.scope "Animated"]
+  [@mel.module "react-native"] [@mel.scope "Animated"]
   external add: (value('a), value('b)) => value(calculated) = "add";
-  [@bs.module "react-native"] [@bs.scope "Animated"]
+  [@mel.module "react-native"] [@mel.scope "Animated"]
   external divide: (value('a), value('b)) => value(calculated) = "divide";
-  [@bs.module "react-native"] [@bs.scope "Animated"]
+  [@mel.module "react-native"] [@mel.scope "Animated"]
   external multiply: (value('a), value('b)) => value(calculated) =
     "multiply";
-  [@bs.module "react-native"] [@bs.scope "Animated"]
+  [@mel.module "react-native"] [@mel.scope "Animated"]
   external modulo: (value('a), float) => value(calculated) = "modulo";
-  [@bs.module "react-native"] [@bs.scope "Animated"]
+  [@mel.module "react-native"] [@mel.scope "Animated"]
   external subtract: (value('a), value('b)) => value(calculated) =
     "subtract";
-  [@bs.module "react-native"] [@bs.scope "Animated"]
+  [@mel.module "react-native"] [@mel.scope "Animated"]
   external diffClamp: (value('a), float, float) => value(calculated) =
     "diffClamp";
   let interpolate = Interpolation.interpolate;
@@ -154,20 +154,20 @@ module ValueMethods = (Val: Value) => {
   type addListenerCallback = Val.addListenerCallback;
   type callback = rawValue => unit;
 
-  [@bs.send] external setValue: (t, rawValue) => unit = "setValue";
-  [@bs.send] external setOffset: (t, rawValue) => unit = "setOffset";
-  [@bs.send] external flattenOffset: t => unit = "flattenOffset";
-  [@bs.send] external extractOffset: t => unit = "extractOffset";
-  [@bs.send]
+  [@mel.send] external setValue: (t, rawValue) => unit = "setValue";
+  [@mel.send] external setOffset: (t, rawValue) => unit = "setOffset";
+  [@mel.send] external flattenOffset: t => unit = "flattenOffset";
+  [@mel.send] external extractOffset: t => unit = "extractOffset";
+  [@mel.send]
   external addListener: (t, addListenerCallback) => string = "addListener";
-  [@bs.send] external removeListener: (t, string) => unit = "removeListener";
-  [@bs.send] external removeAllListeners: t => unit = "removeAllListeners";
+  [@mel.send] external removeListener: (t, string) => unit = "removeListener";
+  [@mel.send] external removeAllListeners: t => unit = "removeAllListeners";
 
-  [@bs.send]
+  [@mel.send]
   external resetAnimation: (t, ~callback: callback=?, unit) => unit =
     "resetAnimation";
 
-  [@bs.send]
+  [@mel.send]
   external stopAnimation: (t, ~callback: callback=?, unit) => unit =
     "stopAnimation";
 
@@ -181,7 +181,7 @@ module Value = {
     type addListenerCallback = {. "value": rawValue} => unit;
   });
 
-  [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
+  [@mel.new] [@mel.scope "Animated"] [@mel.module "react-native"]
   external create: float => t = "Value";
 
   include ValueOperations;
@@ -202,62 +202,62 @@ module ValueXY = {
     type addListenerCallback = rawValue => unit;
   });
 
-  [@deprecated "Please use xyValue instead"] [@bs.obj]
+  [@deprecated "Please use xyValue instead"] [@mel.obj]
   external jsValue: (~x: float, ~y: float) => rawValue;
-  [@bs.obj] external xyValue: (~x: float, ~y: float) => rawValue;
+  [@mel.obj] external xyValue: (~x: float, ~y: float) => rawValue;
 
   type layout = {
     left: Value.t,
     top: Value.t,
   };
-  [@bs.new] [@bs.scope "Animated"] [@bs.module "react-native"]
+  [@mel.new] [@mel.scope "Animated"] [@mel.module "react-native"]
   external create: rawValue => t = "ValueXY";
-  [@bs.send] external getLayout: t => layout = "getLayout";
-  [@bs.send]
+  [@mel.send] external getLayout: t => layout = "getLayout";
+  [@mel.send]
   external getTranslateTransform: t => array(Style.transform) =
     "getTranslateTransform";
 };
 
-[@bs.module "react-native"] [@bs.scope "Animated"]
+[@mel.module "react-native"] [@mel.scope "Animated"]
 external delay: float => Animation.t = "delay";
 
-[@bs.module "react-native"] [@bs.scope "Animated"]
+[@mel.module "react-native"] [@mel.scope "Animated"]
 external sequence: array(Animation.t) => Animation.t = "sequence";
 
 type parallelPayload = {stopTogether: bool};
-[@bs.module "react-native"] [@bs.scope "Animated"]
+[@mel.module "react-native"] [@mel.scope "Animated"]
 external parallel: (array(Animation.t), parallelPayload) => Animation.t =
   "parallel";
 
-[@bs.module "react-native"] [@bs.scope "Animated"]
+[@mel.module "react-native"] [@mel.scope "Animated"]
 external stagger: (float, array(Animation.t)) => Animation.t = "stagger";
 
 type loopConfig;
 
-[@bs.obj] external loopConfig: (~iterations: int) => loopConfig;
+[@mel.obj] external loopConfig: (~iterations: int) => loopConfig;
 
 // multiple externals
-[@bs.module "react-native"] [@bs.scope "Animated"]
+[@mel.module "react-native"] [@mel.scope "Animated"]
 external loop: Animation.t => Animation.t = "loop";
 
 // multiple externals
-[@bs.module "react-native"] [@bs.scope "Animated"]
+[@mel.module "react-native"] [@mel.scope "Animated"]
 external loopWithConfig: (Animation.t, loopConfig) => Animation.t = "loop";
 
 type eventOptions('a);
-[@bs.obj]
+[@mel.obj]
 external eventOptions:
   (~listener: 'a=?, ~useNativeDriver: bool, unit) => eventOptions('a);
 
 // multiple externals
-[@bs.module "react-native"] [@bs.scope "Animated"]
+[@mel.module "react-native"] [@mel.scope "Animated"]
 external event1: (array('mapping), eventOptions('a)) => 'a = "event";
 
 // multiple externals
-[@bs.module "react-native"] [@bs.scope "Animated"]
+[@mel.module "react-native"] [@mel.scope "Animated"]
 external event2: (('mapping1, 'mapping2), eventOptions('a)) => 'a = "event";
 
-[@bs.module "react-native"] [@bs.scope "Animated"]
+[@mel.module "react-native"] [@mel.scope "Animated"]
 external createAnimatedComponent:
   React.component('props) => React.component('props) =
   "createAnimatedComponent";
@@ -297,35 +297,35 @@ module StyleProp = {
 module FlatList = {
   include FlatList;
 
-  let make = Obj.magic(createAnimatedComponent(FlatList.make));
+  let make = FlatList.make;
 };
 
 module Image = {
   include Image;
 
-  let make = createAnimatedComponent(make);
+  let make = make;
 };
 
 module ScrollView = {
   include ScrollView;
 
-  let make = createAnimatedComponent(make);
+  let make = make;
 };
 
 module SectionList = {
   include SectionList;
 
-  let make = Obj.magic(createAnimatedComponent(SectionList.make));
+  let make = SectionList.make;
 };
 
 module Text = {
   include Text;
 
-  let make = createAnimatedComponent(make);
+  let make = make;
 };
 
 module View = {
   include View;
 
-  let make = createAnimatedComponent(make);
+  let make = make;
 };

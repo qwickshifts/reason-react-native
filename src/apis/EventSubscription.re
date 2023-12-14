@@ -1,3 +1,3 @@
 type t;
 
-[@bs.send] external remove: t => unit = "remove";
+[@mel.send] external remove: t => unit = "remove";

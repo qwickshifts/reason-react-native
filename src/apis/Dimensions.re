@@ -10,17 +10,17 @@ type handler = {
   window: displayMetrics,
 };
 
-[@bs.module "react-native"] [@bs.scope "Dimensions"]
+[@mel.module "react-native"] [@mel.scope "Dimensions"]
 external get: [ | `window | `screen] => displayMetrics = "get";
 
 type eventType = [ | `change];
 
-[@bs.module "react-native"] [@bs.scope "Dimensions"]
+[@mel.module "react-native"] [@mel.scope "Dimensions"]
 external addEventListener: (eventType, handler => unit) => unit =
   "addEventListener";
-[@bs.module "react-native"] [@bs.scope "Dimensions"]
+[@mel.module "react-native"] [@mel.scope "Dimensions"]
 external removeEventListener: (eventType, handler => unit) => unit =
   "removeEventListener";
 
-[@bs.module "react-native"]
+[@mel.module "react-native"]
 external useWindowDimensions: unit => displayMetrics = "useWindowDimensions";

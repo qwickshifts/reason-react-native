@@ -1,16 +1,16 @@
 type t = string;
 
-[@bs.inline]
+[@mel.inline]
 let landscape = "landscape";
 
-[@bs.inline]
+[@mel.inline]
 let landscapeLeft = "landscape-left";
 
-[@bs.inline]
+[@mel.inline]
 let landscapeRight = "landscape-right";
 
-[@bs.inline]
+[@mel.inline]
 let portrait = "portrait";
 
-[@bs.inline]
+[@mel.inline]
 let portraitUpsideDown = "portrait-upside-down";

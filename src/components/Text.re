@@ -20,7 +20,7 @@ type ellipsizeMode = [ | `clip | `head | `middle | `tail];
 
 type textBreakStrategy = [ | `simple | `highQuality | `balanced];
 
-[@react.component] [@bs.module "react-native"]
+[@react.component] [@mel.module "react-native"]
 external make:
   (
     ~ref: ref=?,
@@ -68,10 +68,10 @@ external make:
     ~onStartShouldSetResponder: Event.pressEvent => bool=?,
     ~onStartShouldSetResponderCapture: Event.pressEvent => bool=?,
     // React Native Web Props
-    ~rel: [@bs.string] [
+    ~rel: [@mel.string] [
             | `alternate
             | `author
-            | [@bs.as "dns-prefetch"] `dnsPrefetch
+            | [@mel.as "dns-prefetch"] `dnsPrefetch
             | `icon
             | `license
             | `next

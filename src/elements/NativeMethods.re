@@ -1,16 +1,16 @@
 open NativeTypes;
 
 module Make = (T: {type t;}) => {
-  [@bs.module "react-native"]
+  [@mel.module "react-native"]
   external findNodeHandle: T.t => nodeHandle = "findNodeHandle";
 
-  [@bs.send]
+  [@mel.send]
   external setNativeProps: (T.t, Js.t('a)) => unit = "setNativeProps";
 
-  [@bs.send] external focus: T.t => unit = "focus";
-  [@bs.send] external blur: T.t => unit = "blur";
+  [@mel.send] external focus: T.t => unit = "focus";
+  [@mel.send] external blur: T.t => unit = "blur";
 
-  [@bs.send]
+  [@mel.send]
   external measure:
     (
       T.t,
@@ -26,13 +26,13 @@ module Make = (T: {type t;}) => {
     ) =>
     unit =
     "measure";
-  [@bs.send]
+  [@mel.send]
   external measureInWindow:
     (T.t, (~x: float, ~y: float, ~width: float, ~height: float) => unit) =>
     unit =
     "measureInWindow";
 
-  [@bs.send]
+  [@mel.send]
   external measureLayout:
     (
       T.t,

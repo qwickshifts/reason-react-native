@@ -1,12 +1,12 @@
 type t = [ | `active | `background | `inactive | `unknown | `extension];
 
-[@bs.scope "AppState"] [@bs.module "react-native"]
+[@mel.scope "AppState"] [@mel.module "react-native"]
 external currentState: t = "currentState";
 
-[@bs.scope "AppState"] [@bs.module "react-native"]
+[@mel.scope "AppState"] [@mel.module "react-native"]
 external addEventListener:
   (
-  [@bs.string]
+  [@mel.string]
   [
     | `change(t => unit)
     | `focus(unit => unit)
@@ -17,10 +17,10 @@ external addEventListener:
   unit =
   "addEventListener";
 
-[@bs.scope "AppState"] [@bs.module "react-native"]
+[@mel.scope "AppState"] [@mel.module "react-native"]
 external removeEventListener:
   (
-  [@bs.string]
+  [@mel.string]
   [
     | `change(t => unit)
     | `focus(unit => unit)

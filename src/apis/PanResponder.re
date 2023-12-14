@@ -16,7 +16,7 @@ type config;
 type panHandlers;
 type callback('a) = Event.pressEvent => 'a;
 
-[@bs.obj]
+[@mel.obj]
 external config:
   (
     ~onMoveShouldSetPanResponder: (Event.pressEvent, gestureState) => bool=?,
@@ -41,40 +41,40 @@ external config:
   ) =>
   config;
 
-[@bs.module "react-native"] [@bs.scope "PanResponder"]
+[@mel.module "react-native"] [@mel.scope "PanResponder"]
 external create: config => t = "create";
 
-[@bs.get] external panHandlers: t => panHandlers = "panHandlers";
+[@mel.get] external panHandlers: t => panHandlers = "panHandlers";
 
-[@bs.get]
+[@mel.get]
 external onMoveShouldSetResponder: panHandlers => callback(bool) =
   "onMoveShouldSetResponder";
-[@bs.get]
+[@mel.get]
 external onMoveShouldSetResponderCapture: panHandlers => callback(bool) =
   "onMoveShouldSetResponderCapture";
-[@bs.get]
+[@mel.get]
 external onStartShouldSetResponder: panHandlers => callback(bool) =
   "onStartShouldSetResponder";
-[@bs.get]
+[@mel.get]
 external onStartShouldSetResponderCapture: panHandlers => callback(bool) =
   "onStartShouldSetResponderCapture";
-[@bs.get]
+[@mel.get]
 external onResponderReject: panHandlers => callback(unit) =
   "onResponderReject";
-[@bs.get]
+[@mel.get]
 external onResponderGrant: panHandlers => callback(unit) = "onResponderGrant";
-[@bs.get]
+[@mel.get]
 external onResponderRelease: panHandlers => callback(unit) =
   "onResponderRelease";
-[@bs.get]
+[@mel.get]
 external onResponderMove: panHandlers => callback(unit) = "onResponderMove";
-[@bs.get]
+[@mel.get]
 external onResponderTerminate: panHandlers => callback(unit) =
   "onResponderTerminate";
-[@bs.get]
+[@mel.get]
 external onResponderTerminationRequest: panHandlers => callback(bool) =
   "onResponderTerminationRequest";
-[@bs.get]
+[@mel.get]
 external onResponderStart: panHandlers => callback(unit) = "onResponderStart";
-[@bs.get]
+[@mel.get]
 external onResponderEnd: panHandlers => callback(unit) = "onResponderEnd";

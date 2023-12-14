@@ -2,7 +2,7 @@ include NativeElement;
 
 type mode = [ | `dialog | `dropdown];
 
-[@react.component] [@bs.module "react-native"]
+[@react.component] [@mel.module "react-native"]
 external make:
   (
     ~ref: ref=?,
@@ -30,11 +30,11 @@ external make:
     ~accessible: bool=?,
     ~collapsable: bool=?,
     ~hitSlop: View.edgeInsets=?,
-    ~importantForAccessibility: [@bs.string] [
+    ~importantForAccessibility: [@mel.string] [
                                   | `auto
                                   | `yes
                                   | `no
-                                  | [@bs.as "no-hide-descendants"]
+                                  | [@mel.as "no-hide-descendants"]
                                     `noHideDescendants
                                 ]
                                   =?,
@@ -58,11 +58,11 @@ external make:
     ~onResponderTerminationRequest: Event.pressEvent => bool=?,
     ~onStartShouldSetResponder: Event.pressEvent => bool=?,
     ~onStartShouldSetResponderCapture: Event.pressEvent => bool=?,
-    ~pointerEvents: [@bs.string] [
+    ~pointerEvents: [@mel.string] [
                       | `auto
                       | `none
-                      | [@bs.as "box-none"] `boxNone
-                      | [@bs.as "box-only"] `boxOnly
+                      | [@mel.as "box-none"] `boxNone
+                      | [@mel.as "box-only"] `boxOnly
                     ]
                       =?,
     ~removeClippedSubviews: bool=?,
@@ -84,7 +84,7 @@ external make:
   "Picker";
 
 module Item = {
-  [@react.component] [@bs.module "react-native"] [@bs.scope "Picker"]
+  [@react.component] [@mel.module "react-native"] [@mel.scope "Picker"]
   external make:
     (~value: 'a=?, ~label: string, ~color: Color.t=?, ~testID: string=?) =>
     React.element =

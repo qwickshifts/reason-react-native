@@ -1,5 +1,5 @@
 module Make = (T: {type t;}) => {
-  [@bs.send]
+  [@mel.send]
   external setOpacityTo: (T.t, ~value: float, ~duration: float) => unit =
     "setOpacityTo";
 };

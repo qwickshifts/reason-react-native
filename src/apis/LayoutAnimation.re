@@ -10,7 +10,7 @@ type animationType = [
 type property = [ | `opacity | `scaleX | `scaleY | `scaleXY];
 
 type animationConfig;
-[@bs.obj]
+[@mel.obj]
 external animationConfig:
   (
     ~duration: float=?,
@@ -24,7 +24,7 @@ external animationConfig:
   animationConfig;
 
 type layoutAnimationConfig;
-[@bs.obj]
+[@mel.obj]
 external layoutAnimationConfig:
   (
     ~duration: float,
@@ -36,37 +36,37 @@ external layoutAnimationConfig:
   layoutAnimationConfig;
 
 // multiple externals
-[@bs.module "react-native"] [@bs.scope "LayoutAnimation"]
+[@mel.module "react-native"] [@mel.scope "LayoutAnimation"]
 external configureNext: layoutAnimationConfig => unit = "configureNext";
 
 // multiple externals
-[@bs.module "react-native"] [@bs.scope "LayoutAnimation"]
+[@mel.module "react-native"] [@mel.scope "LayoutAnimation"]
 external configureNextWithEndCallback:
   (layoutAnimationConfig, unit => unit) => unit =
   "configureNext";
 
-[@bs.module "react-native"] [@bs.scope "LayoutAnimation"]
+[@mel.module "react-native"] [@mel.scope "LayoutAnimation"]
 external create:
   (~duration: float, ~_type: animationType, ~property: property) =>
   layoutAnimationConfig =
   "create";
 
-[@bs.module "react-native"] [@bs.scope "LayoutAnimation"]
+[@mel.module "react-native"] [@mel.scope "LayoutAnimation"]
 external easeInEaseOut: unit => unit = "easeInEaseOut";
 
-[@bs.module "react-native"] [@bs.scope "LayoutAnimation"]
+[@mel.module "react-native"] [@mel.scope "LayoutAnimation"]
 external linear: unit => unit = "linear";
 
-[@bs.module "react-native"] [@bs.scope "LayoutAnimation"]
+[@mel.module "react-native"] [@mel.scope "LayoutAnimation"]
 external spring: unit => unit = "spring";
 
 module Presets = {
-  [@bs.module "react-native"] [@bs.scope ("LayoutAnimation", "Presets")]
+  [@mel.module "react-native"] [@mel.scope ("LayoutAnimation", "Presets")]
   external easeInEaseOut: layoutAnimationConfig = "easeInEaseOut";
 
-  [@bs.module "react-native"] [@bs.scope ("LayoutAnimation", "Presets")]
+  [@mel.module "react-native"] [@mel.scope ("LayoutAnimation", "Presets")]
   external linear: layoutAnimationConfig = "linear";
 
-  [@bs.module "react-native"] [@bs.scope ("LayoutAnimation", "Presets")]
+  [@mel.module "react-native"] [@mel.scope ("LayoutAnimation", "Presets")]
   external spring: layoutAnimationConfig = "spring";
 };

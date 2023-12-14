@@ -1,20 +1,20 @@
 module Make = (T: {type t;}) => {
   type scrollToEndOptions;
-  [@bs.obj]
+  [@mel.obj]
   external scrollToEndOptions:
     (~animated: bool=?, ~duration: float=?, unit) => scrollToEndOptions;
 
   // multiple externals
-  [@bs.send] external scrollToEnd: T.t => unit = "scrollToEnd";
+  [@mel.send] external scrollToEnd: T.t => unit = "scrollToEnd";
 
   // multiple externals
-  [@bs.send]
+  [@mel.send]
   external scrollToEndWithOptions: (T.t, scrollToEndOptions) => unit =
     "scrollToEnd";
 
-  [@bs.send]
+  [@mel.send]
   external flashScrollIndicators: T.t => unit = "flashScrollIndicators";
 
-  [@bs.send]
+  [@mel.send]
   external setNativeProps: (T.t, Js.t('a)) => unit = "setNativeProps";
 };

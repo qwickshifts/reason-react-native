@@ -1,5 +1,5 @@
 type options;
-[@bs.obj]
+[@mel.obj]
 external options:
   (
     ~options: array(string),
@@ -13,12 +13,12 @@ external options:
   ) =>
   options;
 
-[@bs.module "react-native"] [@bs.scope "ActionSheetIOS"]
+[@mel.module "react-native"] [@mel.scope "ActionSheetIOS"]
 external showActionSheetWithOptions: (options, int => unit) => unit =
   "showActionSheetWithOptions";
 
 type shareOptions;
-[@bs.obj]
+[@mel.obj]
 external shareOptions:
   (
     ~url: string=?,
@@ -31,7 +31,7 @@ external shareOptions:
 
 type error = {stack: option(string)};
 
-[@bs.module "react-native"] [@bs.scope "ActionSheetIOS"]
+[@mel.module "react-native"] [@mel.scope "ActionSheetIOS"]
 external showShareActionSheetWithOptions:
   (shareOptions, error => unit, (bool, string) => unit) => unit =
   "showShareActionSheetWithOptions";

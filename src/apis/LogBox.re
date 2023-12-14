@@ -1,5 +1,5 @@
-[@bs.module "react-native"] [@bs.scope "LogBox"]
+[@mel.module "react-native"] [@mel.scope "LogBox"]
 external ignoreLogs: array(string) => unit = "ignoreLogs";
 
-[@bs.module "react-native"] [@bs.scope "LogBox"]
+[@mel.module "react-native"] [@mel.scope "LogBox"]
 external ignoreAllLogs: unit => unit = "ignoreAllLogs";

@@ -1,16 +1,16 @@
 type t = string;
 
-[@bs.inline]
+[@mel.inline]
 let smallCaps = "small-caps";
 
-[@bs.inline]
+[@mel.inline]
 let oldstyleNums = "oldstyle-nums";
 
-[@bs.inline]
+[@mel.inline]
 let liningNums = "lining-nums";
 
-[@bs.inline]
+[@mel.inline]
 let tabularNums = "tabular-nums";
 
-[@bs.inline]
+[@mel.inline]
 let proportionalNums = "proportional-nums";

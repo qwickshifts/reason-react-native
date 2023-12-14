@@ -10,7 +10,7 @@ and section('item, 'sectionData) = {
   data: array('item),
   key: option(string),
   renderItem: option(renderItemCallback('item, 'sectionData)),
-  [@bs.as "ItemSeparatorComponent"]
+  [@mel.as "ItemSeparatorComponent"]
   itemSeparatorComponent: option(unit => React.element),
   keyExtractor: option(('item, int) => string),
   sectionData: option('sectionData),
@@ -38,7 +38,7 @@ type separatorProps('item, 'sectionData) = {
   "trailingSection": option(section('item, 'sectionData)),
 };
 
-[@bs.obj]
+[@mel.obj]
 external section:
   (
     ~data: array('item),
@@ -51,7 +51,7 @@ external section:
   ) =>
   section('item, 'sectionData);
 
-[@react.component] [@bs.module "react-native"]
+[@react.component] [@mel.module "react-native"]
 external make:
   (
     ~ref: ref=?,
@@ -127,10 +127,10 @@ external make:
     ~fadingEdgeLength: float=?,
     ~horizontal: bool=?,
     ~indicatorStyle: ScrollView.indicatorStyle=?,
-    ~keyboardDismissMode: [@bs.string] [
+    ~keyboardDismissMode: [@mel.string] [
                             | `none
                             | `interactive
-                            | [@bs.as "on-drag"] `onDrag
+                            | [@mel.as "on-drag"] `onDrag
                           ]
                             =?,
     ~keyboardShouldPersistTaps: ScrollView.keyboardShouldPersistTaps=?,
@@ -176,11 +176,11 @@ external make:
     ~accessible: bool=?,
     ~collapsable: bool=?,
     ~hitSlop: View.edgeInsets=?,
-    ~importantForAccessibility: [@bs.string] [
+    ~importantForAccessibility: [@mel.string] [
                                   | `auto
                                   | `yes
                                   | `no
-                                  | [@bs.as "no-hide-descendants"]
+                                  | [@mel.as "no-hide-descendants"]
                                     `noHideDescendants
                                 ]
                                   =?,
@@ -204,11 +204,11 @@ external make:
     ~onResponderTerminationRequest: Event.pressEvent => bool=?,
     ~onStartShouldSetResponder: Event.pressEvent => bool=?,
     ~onStartShouldSetResponderCapture: Event.pressEvent => bool=?,
-    ~pointerEvents: [@bs.string] [
+    ~pointerEvents: [@mel.string] [
                       | `auto
                       | `none
-                      | [@bs.as "box-none"] `boxNone
-                      | [@bs.as "box-only"] `boxOnly
+                      | [@mel.as "box-none"] `boxNone
+                      | [@mel.as "box-only"] `boxOnly
                     ]
                       =?,
     ~removeClippedSubviews: bool=?,

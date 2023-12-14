@@ -3,4 +3,4 @@ type t = {
   light: Color.t,
 };
 
-[@bs.module "react-native"] external make: t => Color.t = "DynamicColorIOS";
+[@mel.module "react-native"] external make: t => Color.t = "DynamicColorIOS";

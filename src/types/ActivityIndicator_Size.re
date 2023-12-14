@@ -1,9 +1,9 @@
 type t = string;
 
-[@bs.inline]
+[@mel.inline]
 let small = "small";
 
-[@bs.inline]
+[@mel.inline]
 let large = "large";
 
 external exact: float => t = "%identity";

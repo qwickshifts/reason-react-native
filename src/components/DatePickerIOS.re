@@ -5,25 +5,25 @@ type localeId = string;
 
 type mode = [ | `date | `time | `datetime];
 
-[@react.component] [@bs.module "react-native"]
+[@react.component] [@mel.module "react-native"]
 external make:
   (
     ~date: Js.Date.t,
     ~onDateChange: Js.Date.t => unit,
     ~maximumDate: Js.Date.t=?,
     ~minimumDate: Js.Date.t=?,
-    ~minuteInterval: [@bs.int] [
-                       | [@bs.as 1] `_1
-                       | [@bs.as 2] `_2
-                       | [@bs.as 3] `_3
-                       | [@bs.as 4] `_4
-                       | [@bs.as 5] `_5
-                       | [@bs.as 6] `_6
-                       | [@bs.as 10] `_10
-                       | [@bs.as 12] `_12
-                       | [@bs.as 15] `_15
-                       | [@bs.as 20] `_20
-                       | [@bs.as 30] `_30
+    ~minuteInterval: [@mel.int] [
+                       | [@mel.as 1] `_1
+                       | [@mel.as 2] `_2
+                       | [@mel.as 3] `_3
+                       | [@mel.as 4] `_4
+                       | [@mel.as 5] `_5
+                       | [@mel.as 6] `_6
+                       | [@mel.as 10] `_10
+                       | [@mel.as 12] `_12
+                       | [@mel.as 15] `_15
+                       | [@mel.as 20] `_20
+                       | [@mel.as 30] `_30
                      ]
                        =?,
     ~mode: mode=?,
@@ -43,11 +43,11 @@ external make:
     ~accessible: bool=?,
     ~collapsable: bool=?,
     ~hitSlop: View.edgeInsets=?,
-    ~importantForAccessibility: [@bs.string] [
+    ~importantForAccessibility: [@mel.string] [
                                   | `auto
                                   | `yes
                                   | `no
-                                  | [@bs.as "no-hide-descendants"]
+                                  | [@mel.as "no-hide-descendants"]
                                     `noHideDescendants
                                 ]
                                   =?,
@@ -71,11 +71,11 @@ external make:
     ~onResponderTerminationRequest: Event.pressEvent => bool=?,
     ~onStartShouldSetResponder: Event.pressEvent => bool=?,
     ~onStartShouldSetResponderCapture: Event.pressEvent => bool=?,
-    ~pointerEvents: [@bs.string] [
+    ~pointerEvents: [@mel.string] [
                       | `auto
                       | `none
-                      | [@bs.as "box-none"] `boxNone
-                      | [@bs.as "box-only"] `boxOnly
+                      | [@mel.as "box-none"] `boxNone
+                      | [@mel.as "box-only"] `boxOnly
                     ]
                       =?,
     ~removeClippedSubviews: bool=?,

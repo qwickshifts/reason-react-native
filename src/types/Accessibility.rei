@@ -2,21 +2,21 @@ type state;
 type actionInfo;
 type checked('a);
 
-[@bs.inline true]
+[@mel.inline true]
 let checked: checked(bool);
 
-[@bs.inline false]
+[@mel.inline false]
 let unchecked: checked(bool);
 
-[@bs.inline "mixed"]
+[@mel.inline "mixed"]
 let mixed: checked(string);
 
-[@bs.obj]
+[@mel.obj]
 external actionInfo: (~name: string, ~label: string=?, unit) => actionInfo;
 
 type actionEvent = AccessibilityActionEvent.t;
 
-[@bs.obj]
+[@mel.obj]
 external state:
   (
     ~disabled: bool=?,
@@ -30,9 +30,9 @@ external state:
 
 type value;
 
-[@bs.obj] external textValue: (~text: string) => value;
+[@mel.obj] external textValue: (~text: string) => value;
 
-[@bs.obj] external intValue: (~min: int, ~max: int, ~now: int) => value;
+[@mel.obj] external intValue: (~min: int, ~max: int, ~now: int) => value;
 
 type liveRegion = [ | `none | `polite | `assertive];
 

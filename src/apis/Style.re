@@ -9,8 +9,8 @@ external listOption: list(option(t)) => t = "%identity";
 // Escape hatch, in case something is added into RN but unsupported,
 // Useful if you play with fancy platforms
 // Use with caution
-[@bs.val]
-external unsafeAddStyle: ([@bs.as {json|{}|json}] _, t, Js.t('a)) => t =
+
+external unsafeAddStyle: ([@mel.as {json|{}|json}] _, t, Js.t('a)) => t =
   "Object.assign";
 
 external unsafeStyle: Js.t('a) => t = "%identity";
@@ -24,29 +24,29 @@ let pct = num => num->Js.Float.toString ++ "%";
 
 type margin = size;
 
-[@bs.inline]
+[@mel.inline]
 let auto = "auto";
 
 type offset;
-[@bs.obj] external offset: (~height: float, ~width: float) => offset;
+[@mel.obj] external offset: (~height: float, ~width: float) => offset;
 
 type angle;
 let deg: float => angle = num => (num->Js.Float.toString ++ "deg")->Obj.magic;
 let rad: float => angle = num => (num->Js.Float.toString ++ "rad")->Obj.magic;
 
 type transform;
-[@bs.obj] external perspective: (~perspective: float) => transform;
-[@bs.obj] external rotate: (~rotate: angle) => transform;
-[@bs.obj] external rotateX: (~rotateX: angle) => transform;
-[@bs.obj] external rotateY: (~rotateY: angle) => transform;
-[@bs.obj] external rotateZ: (~rotateZ: angle) => transform;
-[@bs.obj] external scale: (~scale: float) => transform;
-[@bs.obj] external scaleX: (~scaleX: float) => transform;
-[@bs.obj] external scaleY: (~scaleY: float) => transform;
-[@bs.obj] external translateX: (~translateX: float) => transform;
-[@bs.obj] external translateY: (~translateY: float) => transform;
-[@bs.obj] external skewX: (~skewX: angle) => transform;
-[@bs.obj] external skewY: (~skewY: angle) => transform;
+[@mel.obj] external perspective: (~perspective: float) => transform;
+[@mel.obj] external rotate: (~rotate: angle) => transform;
+[@mel.obj] external rotateX: (~rotateX: angle) => transform;
+[@mel.obj] external rotateY: (~rotateY: angle) => transform;
+[@mel.obj] external rotateZ: (~rotateZ: angle) => transform;
+[@mel.obj] external scale: (~scale: float) => transform;
+[@mel.obj] external scaleX: (~scaleX: float) => transform;
+[@mel.obj] external scaleY: (~scaleY: float) => transform;
+[@mel.obj] external translateX: (~translateX: float) => transform;
+[@mel.obj] external translateY: (~translateY: float) => transform;
+[@mel.obj] external skewX: (~skewX: angle) => transform;
+[@mel.obj] external skewY: (~skewY: angle) => transform;
 // @todo matrix
 
 external unsafeTransform: Js.t('a) => transform = "%identity";
@@ -86,7 +86,7 @@ type position = [ | `absolute | `relative];
 // We don't do the distinction as ReasonML is an HMTS that doesn't support implicit subtyping
 
 // ____DangerouslyImpreciseStyle_Internal
-[@bs.obj]
+[@mel.obj]
 // Dangerous Imprecise Style
 // Contains all of
 // - image style
@@ -109,18 +109,18 @@ external style:
     ~fontSize: float=?,
     ~fontStyle: fontStyle=?,
     ~fontVariant: array(FontVariant.t)=?,
-    ~fontWeight: [@bs.string] [
+    ~fontWeight: [@mel.string] [
                    | `normal
                    | `bold
-                   | [@bs.as "100"] `_100
-                   | [@bs.as "200"] `_200
-                   | [@bs.as "300"] `_300
-                   | [@bs.as "400"] `_400
-                   | [@bs.as "500"] `_500
-                   | [@bs.as "600"] `_600
-                   | [@bs.as "700"] `_700
-                   | [@bs.as "800"] `_800
-                   | [@bs.as "900"] `_900
+                   | [@mel.as "100"] `_100
+                   | [@mel.as "200"] `_200
+                   | [@mel.as "300"] `_300
+                   | [@mel.as "400"] `_400
+                   | [@mel.as "500"] `_500
+                   | [@mel.as "600"] `_600
+                   | [@mel.as "700"] `_700
+                   | [@mel.as "800"] `_800
+                   | [@mel.as "900"] `_900
                  ]
                    =?,
     ~includeFontPadding: bool=?,
@@ -129,11 +129,11 @@ external style:
     ~textAlign: textAlign=?,
     ~textAlignVertical: textAlignVertical=?,
     ~textDecorationColor: Color.t=?,
-    ~textDecorationLine: [@bs.string] [
+    ~textDecorationLine: [@mel.string] [
                            | `none
                            | `underline
-                           | [@bs.as "line-through"] `lineThrough
-                           | [@bs.as "underline line-through"]
+                           | [@mel.as "line-through"] `lineThrough
+                           | [@mel.as "underline line-through"]
                              `underlineLineThrough
                          ]
                            =?,
@@ -180,27 +180,27 @@ external style:
     ~shadowOpacity: float=?,
     ~shadowRadius: float=?,
     // Layout Style Props (https://reactnative.dev/docs/layout-props)
-    ~alignContent: [@bs.string] [
-                     | [@bs.as "flex-start"] `flexStart
-                     | [@bs.as "flex-end"] `flexEnd
+    ~alignContent: [@mel.string] [
+                     | [@mel.as "flex-start"] `flexStart
+                     | [@mel.as "flex-end"] `flexEnd
                      | `center
                      | `stretch
-                     | [@bs.as "space-around"] `spaceAround
-                     | [@bs.as "space-between"] `spaceBetween
+                     | [@mel.as "space-around"] `spaceAround
+                     | [@mel.as "space-between"] `spaceBetween
                    ]
                      =?,
-    ~alignItems: [@bs.string] [
-                   | [@bs.as "flex-start"] `flexStart
-                   | [@bs.as "flex-end"] `flexEnd
+    ~alignItems: [@mel.string] [
+                   | [@mel.as "flex-start"] `flexStart
+                   | [@mel.as "flex-end"] `flexEnd
                    | `center
                    | `stretch
                    | `baseline
                  ]
                    =?,
-    ~alignSelf: [@bs.string] [
+    ~alignSelf: [@mel.string] [
                   | `auto
-                  | [@bs.as "flex-start"] `flexStart
-                  | [@bs.as "flex-end"] `flexEnd
+                  | [@mel.as "flex-start"] `flexStart
+                  | [@mel.as "flex-end"] `flexEnd
                   | `center
                   | `stretch
                   | `baseline
@@ -216,29 +216,29 @@ external style:
     // ~borderTopWidth: float=?,
     // ~borderWidth: float=?,
     ~bottom: size=?,
-    ~direction: [@bs.string] [ | [@bs.as "inherit"] `inherit_ | `ltr | `rtl]=?,
+    ~direction: [@mel.string] [ | [@mel.as "inherit"] `inherit_ | `ltr | `rtl]=?,
     ~display: display=?,
     ~_end: size=?,
     ~flex: float=?,
     ~flexBasis: margin=?,
-    ~flexDirection: [@bs.string] [
+    ~flexDirection: [@mel.string] [
                       | `row
-                      | [@bs.as "row-reverse"] `rowReverse
+                      | [@mel.as "row-reverse"] `rowReverse
                       | `column
-                      | [@bs.as "column-reverse"] `columnReverse
+                      | [@mel.as "column-reverse"] `columnReverse
                     ]
                       =?,
     ~flexGrow: float=?,
     ~flexShrink: float=?,
     ~flexWrap: flexWrap=?,
     ~height: size=?,
-    ~justifyContent: [@bs.string] [
-                       | [@bs.as "flex-start"] `flexStart
-                       | [@bs.as "flex-end"] `flexEnd
+    ~justifyContent: [@mel.string] [
+                       | [@mel.as "flex-start"] `flexStart
+                       | [@mel.as "flex-end"] `flexEnd
                        | `center
-                       | [@bs.as "space-around"] `spaceAround
-                       | [@bs.as "space-between"] `spaceBetween
-                       | [@bs.as "space-evenly"] `spaceEvenly
+                       | [@mel.as "space-around"] `spaceAround
+                       | [@mel.as "space-between"] `spaceBetween
+                       | [@mel.as "space-evenly"] `spaceEvenly
                      ]
                        =?,
     ~left: size=?,
@@ -276,7 +276,7 @@ external style:
   t;
 
 // ____ViewStyleProp_Internal
-[@bs.obj]
+[@mel.obj]
 // *Comment below is supposed to be after the first ( below but refmt move it here*
 // View styles https://reactnative.dev/docs/view-style-props
 external viewStyle:
@@ -317,27 +317,27 @@ external viewStyle:
     ~shadowOpacity: float=?,
     ~shadowRadius: float=?,
     // Layout Style Props (https://reactnative.dev/docs/layout-props)
-    ~alignContent: [@bs.string] [
-                     | [@bs.as "flex-start"] `flexStart
-                     | [@bs.as "flex-end"] `flexEnd
+    ~alignContent: [@mel.string] [
+                     | [@mel.as "flex-start"] `flexStart
+                     | [@mel.as "flex-end"] `flexEnd
                      | `center
                      | `stretch
-                     | [@bs.as "space-around"] `spaceAround
-                     | [@bs.as "space-between"] `spaceBetween
+                     | [@mel.as "space-around"] `spaceAround
+                     | [@mel.as "space-between"] `spaceBetween
                    ]
                      =?,
-    ~alignItems: [@bs.string] [
-                   | [@bs.as "flex-start"] `flexStart
-                   | [@bs.as "flex-end"] `flexEnd
+    ~alignItems: [@mel.string] [
+                   | [@mel.as "flex-start"] `flexStart
+                   | [@mel.as "flex-end"] `flexEnd
                    | `center
                    | `stretch
                    | `baseline
                  ]
                    =?,
-    ~alignSelf: [@bs.string] [
+    ~alignSelf: [@mel.string] [
                   | `auto
-                  | [@bs.as "flex-start"] `flexStart
-                  | [@bs.as "flex-end"] `flexEnd
+                  | [@mel.as "flex-start"] `flexStart
+                  | [@mel.as "flex-end"] `flexEnd
                   | `center
                   | `stretch
                   | `baseline
@@ -353,29 +353,29 @@ external viewStyle:
     // ~borderTopWidth: float=?,
     // ~borderWidth: float=?,
     ~bottom: size=?,
-    ~direction: [@bs.string] [ | [@bs.as "inherit"] `inherit_ | `ltr | `rtl]=?,
+    ~direction: [@mel.string] [ | [@mel.as "inherit"] `inherit_ | `ltr | `rtl]=?,
     ~display: display=?,
     ~_end: size=?,
     ~flex: float=?,
     ~flexBasis: margin=?,
-    ~flexDirection: [@bs.string] [
+    ~flexDirection: [@mel.string] [
                       | `row
-                      | [@bs.as "row-reverse"] `rowReverse
+                      | [@mel.as "row-reverse"] `rowReverse
                       | `column
-                      | [@bs.as "column-reverse"] `columnReverse
+                      | [@mel.as "column-reverse"] `columnReverse
                     ]
                       =?,
     ~flexGrow: float=?,
     ~flexShrink: float=?,
     ~flexWrap: flexWrap=?,
     ~height: size=?,
-    ~justifyContent: [@bs.string] [
-                       | [@bs.as "flex-start"] `flexStart
-                       | [@bs.as "flex-end"] `flexEnd
+    ~justifyContent: [@mel.string] [
+                       | [@mel.as "flex-start"] `flexStart
+                       | [@mel.as "flex-end"] `flexEnd
                        | `center
-                       | [@bs.as "space-around"] `spaceAround
-                       | [@bs.as "space-between"] `spaceBetween
-                       | [@bs.as "space-evenly"] `spaceEvenly
+                       | [@mel.as "space-around"] `spaceAround
+                       | [@mel.as "space-between"] `spaceBetween
+                       | [@mel.as "space-evenly"] `spaceEvenly
                      ]
                        =?,
     ~left: size=?,
@@ -413,7 +413,7 @@ external viewStyle:
   t;
 
 // ____TextStyleProp_Internal
-[@bs.obj]
+[@mel.obj]
 // Text Style Props (https://reactnative.dev/docs/text-style-props)
 external textStyle:
   (
@@ -422,18 +422,18 @@ external textStyle:
     ~fontSize: float=?,
     ~fontStyle: fontStyle=?,
     ~fontVariant: array(FontVariant.t)=?,
-    ~fontWeight: [@bs.string] [
+    ~fontWeight: [@mel.string] [
                    | `normal
                    | `bold
-                   | [@bs.as "100"] `_100
-                   | [@bs.as "200"] `_200
-                   | [@bs.as "300"] `_300
-                   | [@bs.as "400"] `_400
-                   | [@bs.as "500"] `_500
-                   | [@bs.as "600"] `_600
-                   | [@bs.as "700"] `_700
-                   | [@bs.as "800"] `_800
-                   | [@bs.as "900"] `_900
+                   | [@mel.as "100"] `_100
+                   | [@mel.as "200"] `_200
+                   | [@mel.as "300"] `_300
+                   | [@mel.as "400"] `_400
+                   | [@mel.as "500"] `_500
+                   | [@mel.as "600"] `_600
+                   | [@mel.as "700"] `_700
+                   | [@mel.as "800"] `_800
+                   | [@mel.as "900"] `_900
                  ]
                    =?,
     ~includeFontPadding: bool=?,
@@ -442,11 +442,11 @@ external textStyle:
     ~textAlign: textAlign=?,
     ~textAlignVertical: textAlignVertical=?,
     ~textDecorationColor: Color.t=?,
-    ~textDecorationLine: [@bs.string] [
+    ~textDecorationLine: [@mel.string] [
                            | `none
                            | `underline
-                           | [@bs.as "line-through"] `lineThrough
-                           | [@bs.as "underline line-through"]
+                           | [@mel.as "line-through"] `lineThrough
+                           | [@mel.as "underline line-through"]
                              `underlineLineThrough
                          ]
                            =?,
@@ -493,27 +493,27 @@ external textStyle:
     ~shadowOpacity: float=?,
     ~shadowRadius: float=?,
     // Layout Style Props (https://reactnative.dev/docs/layout-props)
-    ~alignContent: [@bs.string] [
-                     | [@bs.as "flex-start"] `flexStart
-                     | [@bs.as "flex-end"] `flexEnd
+    ~alignContent: [@mel.string] [
+                     | [@mel.as "flex-start"] `flexStart
+                     | [@mel.as "flex-end"] `flexEnd
                      | `center
                      | `stretch
-                     | [@bs.as "space-around"] `spaceAround
-                     | [@bs.as "space-between"] `spaceBetween
+                     | [@mel.as "space-around"] `spaceAround
+                     | [@mel.as "space-between"] `spaceBetween
                    ]
                      =?,
-    ~alignItems: [@bs.string] [
-                   | [@bs.as "flex-start"] `flexStart
-                   | [@bs.as "flex-end"] `flexEnd
+    ~alignItems: [@mel.string] [
+                   | [@mel.as "flex-start"] `flexStart
+                   | [@mel.as "flex-end"] `flexEnd
                    | `center
                    | `stretch
                    | `baseline
                  ]
                    =?,
-    ~alignSelf: [@bs.string] [
+    ~alignSelf: [@mel.string] [
                   | `auto
-                  | [@bs.as "flex-start"] `flexStart
-                  | [@bs.as "flex-end"] `flexEnd
+                  | [@mel.as "flex-start"] `flexStart
+                  | [@mel.as "flex-end"] `flexEnd
                   | `center
                   | `stretch
                   | `baseline
@@ -529,29 +529,29 @@ external textStyle:
     // ~borderTopWidth: float=?,
     // ~borderWidth: float=?,
     ~bottom: size=?,
-    ~direction: [@bs.string] [ | [@bs.as "inherit"] `inherit_ | `ltr | `rtl]=?,
+    ~direction: [@mel.string] [ | [@mel.as "inherit"] `inherit_ | `ltr | `rtl]=?,
     ~display: display=?,
     ~_end: size=?,
     ~flex: float=?,
     ~flexBasis: margin=?,
-    ~flexDirection: [@bs.string] [
+    ~flexDirection: [@mel.string] [
                       | `row
-                      | [@bs.as "row-reverse"] `rowReverse
+                      | [@mel.as "row-reverse"] `rowReverse
                       | `column
-                      | [@bs.as "column-reverse"] `columnReverse
+                      | [@mel.as "column-reverse"] `columnReverse
                     ]
                       =?,
     ~flexGrow: float=?,
     ~flexShrink: float=?,
     ~flexWrap: flexWrap=?,
     ~height: size=?,
-    ~justifyContent: [@bs.string] [
-                       | [@bs.as "flex-start"] `flexStart
-                       | [@bs.as "flex-end"] `flexEnd
+    ~justifyContent: [@mel.string] [
+                       | [@mel.as "flex-start"] `flexStart
+                       | [@mel.as "flex-end"] `flexEnd
                        | `center
-                       | [@bs.as "space-around"] `spaceAround
-                       | [@bs.as "space-between"] `spaceBetween
-                       | [@bs.as "space-evenly"] `spaceEvenly
+                       | [@mel.as "space-around"] `spaceAround
+                       | [@mel.as "space-between"] `spaceBetween
+                       | [@mel.as "space-evenly"] `spaceEvenly
                      ]
                        =?,
     ~left: size=?,
@@ -589,7 +589,7 @@ external textStyle:
   t;
 
 // ____ImageStyleProp_Internal
-[@bs.obj]
+[@mel.obj]
 // Image Style Props (https://reactnative.dev/docs/image-style-props)
 external imageStyle:
   (
@@ -633,27 +633,27 @@ external imageStyle:
     ~shadowOpacity: float=?,
     ~shadowRadius: float=?,
     // Layout Style Props (https://reactnative.dev/docs/layout-props)
-    ~alignContent: [@bs.string] [
-                     | [@bs.as "flex-start"] `flexStart
-                     | [@bs.as "flex-end"] `flexEnd
+    ~alignContent: [@mel.string] [
+                     | [@mel.as "flex-start"] `flexStart
+                     | [@mel.as "flex-end"] `flexEnd
                      | `center
                      | `stretch
-                     | [@bs.as "space-around"] `spaceAround
-                     | [@bs.as "space-between"] `spaceBetween
+                     | [@mel.as "space-around"] `spaceAround
+                     | [@mel.as "space-between"] `spaceBetween
                    ]
                      =?,
-    ~alignItems: [@bs.string] [
-                   | [@bs.as "flex-start"] `flexStart
-                   | [@bs.as "flex-end"] `flexEnd
+    ~alignItems: [@mel.string] [
+                   | [@mel.as "flex-start"] `flexStart
+                   | [@mel.as "flex-end"] `flexEnd
                    | `center
                    | `stretch
                    | `baseline
                  ]
                    =?,
-    ~alignSelf: [@bs.string] [
+    ~alignSelf: [@mel.string] [
                   | `auto
-                  | [@bs.as "flex-start"] `flexStart
-                  | [@bs.as "flex-end"] `flexEnd
+                  | [@mel.as "flex-start"] `flexStart
+                  | [@mel.as "flex-end"] `flexEnd
                   | `center
                   | `stretch
                   | `baseline
@@ -669,29 +669,29 @@ external imageStyle:
     // ~borderTopWidth: float=?,
     // ~borderWidth: float=?,
     ~bottom: size=?,
-    ~direction: [@bs.string] [ | [@bs.as "inherit"] `inherit_ | `ltr | `rtl]=?,
+    ~direction: [@mel.string] [ | [@mel.as "inherit"] `inherit_ | `ltr | `rtl]=?,
     ~display: display=?,
     ~_end: size=?,
     ~flex: float=?,
     ~flexBasis: margin=?,
-    ~flexDirection: [@bs.string] [
+    ~flexDirection: [@mel.string] [
                       | `row
-                      | [@bs.as "row-reverse"] `rowReverse
+                      | [@mel.as "row-reverse"] `rowReverse
                       | `column
-                      | [@bs.as "column-reverse"] `columnReverse
+                      | [@mel.as "column-reverse"] `columnReverse
                     ]
                       =?,
     ~flexGrow: float=?,
     ~flexShrink: float=?,
     ~flexWrap: flexWrap=?,
     ~height: size=?,
-    ~justifyContent: [@bs.string] [
-                       | [@bs.as "flex-start"] `flexStart
-                       | [@bs.as "flex-end"] `flexEnd
+    ~justifyContent: [@mel.string] [
+                       | [@mel.as "flex-start"] `flexStart
+                       | [@mel.as "flex-end"] `flexEnd
                        | `center
-                       | [@bs.as "space-around"] `spaceAround
-                       | [@bs.as "space-between"] `spaceBetween
-                       | [@bs.as "space-evenly"] `spaceEvenly
+                       | [@mel.as "space-around"] `spaceAround
+                       | [@mel.as "space-between"] `spaceBetween
+                       | [@mel.as "space-evenly"] `spaceEvenly
                      ]
                        =?,
     ~left: size=?,

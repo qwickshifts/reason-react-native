@@ -1,4 +1,4 @@
-[@react.component] [@bs.module "react-native"]
+[@react.component] [@mel.module "react-native"]
 external make:
   (
     ~backgroundColor: Color.t=?,

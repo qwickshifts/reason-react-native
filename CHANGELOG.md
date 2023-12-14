@@ -140,7 +140,7 @@ before reporting issue.
 - Upgraded reason-react to 0.8.0 ([#689](https://github.com/reason-react-native/reason-react-native/issues/689)) by [@jfrolich](https://github.com/jfrolich)  
   See <https://reasonml.org/blog/reason-react-0-8-0> for more informations
 - Upgraded to bs-platform 7.3.0 ([#631](https://github.com/reason-react-native/reason-react-native/issues/631)) by [@idkjs](https://github.com/idkjs) ([#666](https://github.com/reason-react-native/reason-react-native/issues/666)) by [@Arnarkari93](https://github.com/Arnarkari93) ([#674](https://github.com/reason-react-native/reason-react-native/issues/674)) ([#693](https://github.com/reason-react-native/reason-react-native/issues/693)) ([#690](https://github.com/reason-react-native/reason-react-native/issues/690)) ([#694](https://github.com/reason-react-native/reason-react-native/issues/694)) by [@sgny](https://github.com/sgny) ([#695](https://github.com/reason-react-native/reason-react-native/issues/695)) by [@cknitt](https://github.com/cknitt)  
-  We have converted `Js.t` objects to records where possible (we had to skipped objects that rely on `[@bs.meth]`). This means ou will have to change a lot of `##` notation to just a dot (`.`) to access properties.  
+  We have converted `Js.t` objects to records where possible (we had to skipped objects that rely on `[@mel.meth]`). This means ou will have to change a lot of `##` notation to just a dot (`.`) to access properties.  
   See <https://reasonml.org/blog/whats-new-in-7-pt1> for more informations
 - Removed some methods for FlatList, ScrollView, SectionList, VirtualizedList and VirtualizedSectionList ([#680](https://github.com/reason-react-native/reason-react-native/issues/680)) by [@sgny](https://github.com/sgny)  
   These components are interrelated in the sense of being based on each other and inheriting props, however, applicable methods are not inherited quite so consistently. We removed unavailable methods from each component.
@@ -222,7 +222,7 @@ Sorry, a mix of bugfixes & changes! This should be easy to handle for you.
 - Fix `AppState` (now return `unit`) [#568](https://github.com/reason-react-native/reason-react-native/pull/568) by [@cknitt](https://github.com/cknitt)
 - Fix `Animated.event` type so it can be used in `Animated.ScrollView`
   `onScroll` props (& similar) [#584](https://github.com/reason-react-native/reason-react-native/pull/584) by [@MoOx](https://github.com/MoOx)
-- Fix missing `[@bs.meth]` in methods of `Event`, `BackHandler` & `NetInfo` [#621](https://github.com/reason-react-native/reason-react-native/pull/621) by [@cknitt](https://github.com/cknitt)
+- Fix missing `[@mel.meth]` in methods of `Event`, `BackHandler` & `NetInfo` [#621](https://github.com/reason-react-native/reason-react-native/pull/621) by [@cknitt](https://github.com/cknitt)
 - Fix `ScrollView` `scrollToItem`, `scrollToIndex` and `scrollToOffset` [#569](https://github.com/reason-react-native/reason-react-native/pull/569) by [@benadamstyles](https://github.com/benadamstyles)
 - Fix `Webview` `contentInset` prop [#607](https://github.com/reason-react-native/reason-react-native/pull/607) by [@cem2ran](https://github.com/cem2ran)
 - Fix `WebView` event types & add missing fields [#608](https://github.com/reason-react-native/reason-react-native/pull/608) by [@cem2ran](https://github.com/cem2ran)

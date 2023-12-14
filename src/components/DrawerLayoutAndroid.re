@@ -16,7 +16,7 @@ type t;
 
 type androidInteractionState = [ | `idle | `dragging | `settling];
 
-[@react.component] [@bs.module "react-native"]
+[@react.component] [@mel.module "react-native"]
 external make:
   (
     ~ref: ref=?,
@@ -25,12 +25,12 @@ external make:
     ~onDrawerClose: unit => unit=?,
     ~drawerPosition: drawerPosition=?,
     ~drawerWidth: float=?,
-    ~keyboardDismissMode: [@bs.string] [ | `none | [@bs.as "on-drag"] `onDrag]
+    ~keyboardDismissMode: [@mel.string] [ | `none | [@mel.as "on-drag"] `onDrag]
                             =?,
-    ~drawerLockMode: [@bs.string] [
-                       | [@bs.as "unlocked"] `unlocked
-                       | [@bs.as "locked-closed"] `lockedClosed
-                       | [@bs.as "locked-open"] `lockedOpen
+    ~drawerLockMode: [@mel.string] [
+                       | [@mel.as "unlocked"] `unlocked
+                       | [@mel.as "locked-closed"] `lockedClosed
+                       | [@mel.as "locked-open"] `lockedOpen
                      ]
                        =?,
     ~onDrawerOpen: unit => unit=?,
@@ -52,11 +52,11 @@ external make:
     ~accessible: bool=?,
     ~collapsable: bool=?,
     ~hitSlop: View.edgeInsets=?,
-    ~importantForAccessibility: [@bs.string] [
+    ~importantForAccessibility: [@mel.string] [
                                   | `auto
                                   | `yes
                                   | `no
-                                  | [@bs.as "no-hide-descendants"]
+                                  | [@mel.as "no-hide-descendants"]
                                     `noHideDescendants
                                 ]
                                   =?,
@@ -80,11 +80,11 @@ external make:
     ~onResponderTerminationRequest: Event.pressEvent => bool=?,
     ~onStartShouldSetResponder: Event.pressEvent => bool=?,
     ~onStartShouldSetResponderCapture: Event.pressEvent => bool=?,
-    ~pointerEvents: [@bs.string] [
+    ~pointerEvents: [@mel.string] [
                       | `auto
                       | `none
-                      | [@bs.as "box-none"] `boxNone
-                      | [@bs.as "box-only"] `boxOnly
+                      | [@mel.as "box-none"] `boxNone
+                      | [@mel.as "box-only"] `boxOnly
                     ]
                       =?,
     ~removeClippedSubviews: bool=?,
