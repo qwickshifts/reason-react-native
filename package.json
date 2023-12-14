@@ -21,12 +21,6 @@
     "src/**/*.js",
     "!src/**/*.bs.js"
   ],
-  "scripts": {
-    "start": "yarn re:start",
-    "build": "yarn re:build",
-    "test": "yarn re:clean-build",
-    "release": "npmpub"
-  },
   "devDependencies": {
     "react": "17.0.1",
     "react-dom": "17.0.1",
