@@ -4,6 +4,6 @@
  (modes melange)
  (libraries reason-react)
  (preprocess
-  (pps melange.ppx)))
+  (pps melange.ppx reason-react-ppx)))
 
 (include_subdirs unqualified)

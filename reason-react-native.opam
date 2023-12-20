@@ -34,3 +34,7 @@ build: [
   ]
 ]
 dev-repo: "git+https://github.com/riKiMasan/reason-react-native.git"
+pin-depends: [
+  [ "reason-react.dev" "git+https://github.com/reasonml/reason-react.git#main" ] # KUBU: this one is unstable and we need minimum 76d5ea8d381e1a1a90456a35618d224b726adc14
+  [ "reason-react-ppx.dev" "git+https://github.com/reasonml/reason-react.git#main" ] # KUBU: this one is unstable and we need minimum 76d5ea8d381e1a1a90456a35618d224b726adc14
+]
