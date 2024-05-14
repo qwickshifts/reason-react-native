@@ -1,10 +1,32 @@
 type t = string;
 
-let rgb = (~r: int, ~g: int, ~b: int) => {j|rgb($r, $g, $b)|j};
-let rgba = (~r: int, ~g: int, ~b: int, ~a: float) => {j|rgba($r, $g, $b, $a)|j};
+let rgb = (~r: int, ~g: int, ~b: int) => {
+  let r = r |> string_of_int;
+  let g = g |> string_of_int;
+  let b = b |> string_of_int;
+  {j|rgb($r, $g, $b)|j};
+};
+let rgba = (~r: int, ~g: int, ~b: int, ~a: float) => {
+  let r = r |> string_of_int;
+  let g = g |> string_of_int;
+  let b = b |> string_of_int;
+  let a = a |> string_of_float;
+  {j|rgba($r, $g, $b, $a)|j};
+};
 
-let hsl = (~h: float, ~s: float, ~l: float) => {j|hsl($h, $s%, $l%)|j};
-let hsla = (~h: float, ~s: float, ~l: float, ~a: float) => {j|hsl($h, $s%, $l%, $a)|j};
+let hsl = (~h: float, ~s: float, ~l: float) => {
+  let h = h |> string_of_float;
+  let s = s |> string_of_float;
+  let l = l |> string_of_float;
+  {j|hsl($h, $s%, $l%)|j};
+};
+let hsla = (~h: float, ~s: float, ~l: float, ~a: float) => {
+  let h = h |> string_of_float;
+  let s = s |> string_of_float;
+  let l = l |> string_of_float;
+  let a = a |> string_of_float;
+  {j|hsl($h, $s%, $l%, $a)|j};
+};
 
 [@mel.inline]
 let transparent = "transparent";

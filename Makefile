@@ -15,12 +15,12 @@ help: ## Print this help message
 nuke: ## Delete all files that will be generated
 	rm $(project_name).opam
 	rm -rf node_modules
-	opam switch remove . -y
+	rm -rf _build
+	rm -rf _opam
 
 .PHONY: create-switch
 create-switch: ## Create opam switch
-	opam switch create . -y --empty
-	opam install dune -y
+	opam switch create . -y --deps-only --no-install --packages=dune,ocamlformat,ocaml-lsp-server,ocaml-base-compiler
 
 .PHONY: init
 init: create-switch install ## Configure everything to develop this repository in local

@@ -10,7 +10,7 @@ bug-reports: "https://github.com/riKiMasan/reason-react-native/issues"
 depends: [
   "dune" {>= "3.12"}
   "dot-merlin-reader"
-  "melange" {>= "2.0.0"}
+  "melange" {>= "3.0.0" & < "4.0.0"}
   "ocaml" {>= "5.1.0"}
   "reason" {>= "3.10.0"}
   "ocaml-lsp-server"
@@ -34,6 +34,3 @@ build: [
   ]
 ]
 dev-repo: "git+https://github.com/riKiMasan/reason-react-native.git"
-pin-depends: [
-  [ "reason-react.dev" "git+https://github.com/reasonml/reason-react.git#main" ] # KUBU: this one is unstable and we need minimum 76d5ea8d381e1a1a90456a35618d224b726adc14
-]
