@@ -3,6 +3,8 @@ type announcementResult = {
   success: bool,
 };
 
+type announceForAccessibilityOptions = {queue: option(bool)};
+
 [@mel.scope "AccessibilityInfo"] [@mel.module "react-native"]
 external isBoldTextEnabled: unit => Js.Promise.t(bool) = "isBoldTextEnabled";
 
@@ -34,10 +36,16 @@ external setAccessibilityFocus: NativeTypes.nodeHandle => unit =
 external announceForAccessibility: string => unit = "announceForAccessibility";
 
 [@mel.scope "AccessibilityInfo"] [@mel.module "react-native"]
+external announceForAccessibilityWithOptions:
+  (string, announceForAccessibilityOptions) => unit =
+  "announceForAccessibilityWithOptions";
+
+[@mel.scope "AccessibilityInfo"] [@mel.module "react-native"]
 external addEventListener:
   (
   [@mel.string]
   [
+    | `accessibilityServiceChanged(bool => unit)
     | `boldTextChanged(bool => unit)
     | `grayscaleChanged(bool => unit)
     | `invertColorsChanged(bool => unit)
@@ -47,7 +55,7 @@ external addEventListener:
     | `announcementFinished(announcementResult => unit)
   ]
   ) =>
-  unit =
+  Js.Promise.t(unit) =
   "addEventListener";
 
 [@mel.scope "AccessibilityInfo"] [@mel.module "react-native"]
@@ -55,6 +63,7 @@ external removeEventListener:
   (
   [@mel.string]
   [
+    | `accessibilityServiceChanged(bool => unit)
     | `boldTextChanged(bool => unit)
     | `grayscaleChanged(bool => unit)
     | `invertColorsChanged(bool => unit)
@@ -64,5 +73,17 @@ external removeEventListener:
     | `announcementFinished(announcementResult => unit)
   ]
   ) =>
-  unit =
+  Js.Promise.t(unit) =
   "removeEventListener";
+
+[@mel.scope "AccessibilityInfo"] [@mel.module "react-native"]
+external getRecommendedTimeoutMillis: int => Js.Promise.t(int) =
+  "getRecommendedTimeoutMillis";
+
+[@mel.scope "AccessibilityInfo"] [@mel.module "react-native"]
+external isAccessibilityServiceEnabled: unit => Js.Promise.t(bool) =
+  "isAccessibilityServiceEnabled";
+
+[@mel.scope "AccessibilityInfo"] [@mel.module "react-native"]
+external prefersCrossFadeTransitions: unit => Js.Promise.t(bool) =
+  "prefersCrossFadeTransitions";
