@@ -24,7 +24,7 @@
   "devDependencies": {
     "react": "^18.0.0",
     "react-dom": "18.0.0",
-    "react-native": "0.64.0",
+    "react-native": "0.74.3",
     "@babel/core": "^7.1.6",
     "@babel/preset-env": "^7.1.6"
   }
