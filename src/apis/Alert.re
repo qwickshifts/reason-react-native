@@ -1,37 +1,19 @@
 type alertButtonStyle = [ | `default | `cancel | `destructive];
-type alertType = [ | `default | `plainText | `secureText | `loginPassword];
 
 type alertButton = {
-  text: string,
-  onPress: unit => unit,
-  style: alertButtonStyle,
+  text: option(string),
+  onPress: option(option(string) => unit),
   isPreferred: option(bool),
+  style: option(alertButtonStyle),
 };
 
 type alertOptions = {
   cancelable: option(bool),
-  userInterfaceStyle: option(string),
+  userInterfaceStyle: option([ | `unspecified | `light | `dark]),
   onDismiss: option(unit => unit),
 };
 
-[@mel.obj]
-external alertButton:
-  (
-    ~text: string,
-    ~onPress: unit => unit,
-    ~style: alertButtonStyle,
-    ~isPreferred: option(bool)=?
-  ) =>
-  alertButton;
-
-[@mel.obj]
-external alertOptions:
-  (
-    ~cancelable: option(bool)=?,
-    ~userInterfaceStyle: option(string)=?,
-    ~onDismiss: option(unit => unit)=?
-  ) =>
-  alertOptions;
+type alertType = [ | `default | `plainText | `secureText | `loginPassword];
 
 [@mel.scope "Alert"] [@mel.module "react-native"]
 external alert:
@@ -49,12 +31,14 @@ external prompt:
   (
     ~title: string,
     ~message: option(string)=?,
-    ~callbackOrButtons: [@mel.unwrap] [
-                          | `callback(string => unit)
-                          | `buttons(array(alertButton))
-                        ]
+    ~callbackOrButtons: option(
+                          [
+                            | `Callback(string => unit)
+                            | `Buttons(array(alertButton))
+                          ],
+                        )
                           =?,
-    ~type_: alertType=?,
+    ~type_: option(alertType)=?,
     ~defaultValue: option(string)=?,
     ~keyboardType: option(string)=?,
     ~options: option(alertOptions)=?
