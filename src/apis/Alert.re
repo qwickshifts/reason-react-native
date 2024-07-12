@@ -1,25 +1,45 @@
-type options;
+type alertButtonStyle = [ | `default | `cancel | `destructive];
+type alertType = [ | `default | `plainText | `secureText | `loginPassword];
+
+type alertButton = {
+  text: string,
+  onPress: unit => unit,
+  style: alertButtonStyle,
+  isPreferred: option(bool),
+};
+
+type alertOptions = {
+  cancelable: option(bool),
+  userInterfaceStyle: option(string),
+  onDismiss: option(unit => unit),
+};
 
 [@mel.obj]
-external options:
-  (~cancelable: bool=?, ~onDismiss: unit => unit=?, unit) => options;
-
-type button;
-
-type style = [ | `default | `cancel | `destructive];
+external alertButton:
+  (
+    ~text: string,
+    ~onPress: unit => unit,
+    ~style: alertButtonStyle,
+    ~isPreferred: option(bool)=?
+  ) =>
+  alertButton;
 
 [@mel.obj]
-external button:
-  (~text: string=?, ~onPress: unit => unit=?, ~style: style=?, unit) => button;
+external alertOptions:
+  (
+    ~cancelable: option(bool)=?,
+    ~userInterfaceStyle: option(string)=?,
+    ~onDismiss: option(unit => unit)=?
+  ) =>
+  alertOptions;
 
 [@mel.scope "Alert"] [@mel.module "react-native"]
 external alert:
   (
     ~title: string,
-    ~message: string=?,
-    ~buttons: array(button)=?,
-    ~options: options=?,
-    unit
+    ~message: option(string)=?,
+    ~buttons: option(array(alertButton))=?,
+    ~options: option(alertOptions)=?
   ) =>
   unit =
   "alert";
@@ -28,22 +48,16 @@ external alert:
 external prompt:
   (
     ~title: string,
-    ~message: string=?,
+    ~message: option(string)=?,
     ~callbackOrButtons: [@mel.unwrap] [
                           | `callback(string => unit)
-                          | `buttons(array(button))
+                          | `buttons(array(alertButton))
                         ]
                           =?,
-    ~type_: [@mel.string] [
-              | `default
-              | [@mel.as "plain-text"] `plainText
-              | [@mel.as "secure-text"] `secureText
-              | [@mel.as "login-password"] `loginPassword
-            ]
-              =?,
-    ~defaultValue: string=?,
-    ~keyboardType: string=?,
-    unit
+    ~type_: alertType=?,
+    ~defaultValue: option(string)=?,
+    ~keyboardType: option(string)=?,
+    ~options: option(alertOptions)=?
   ) =>
   unit =
   "prompt";
