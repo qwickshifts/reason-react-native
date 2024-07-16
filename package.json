@@ -1,9 +1,9 @@
 {
   "name": "reason-react-native",
   "description": "ReScript bindings for React Native.",
-  "version": "0.64.0",
+  "version": "0.74.3",
   "peerDependencies": {
-    "react-native": "^0.64.0"
+    "react-native": "^0.74.3"
   },
   "repository": "https://github.com/reason-react-native/reason-react-native.git",
   "license": "MIT",
@@ -23,7 +23,7 @@
   ],
   "devDependencies": {
     "react": "^18.0.0",
-    "react-dom": "18.0.0",
+    "react-dom": "^18.0.0",
     "react-native": "0.74.3",
     "@babel/core": "^7.1.6",
     "@babel/preset-env": "^7.1.6"
