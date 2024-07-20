@@ -13,3 +13,4 @@ external addChangeListener:
 
 [@mel.module "react-native"]
 external useColorScheme: unit => Js.Null.t(t) = "useColorScheme";
+let useColorScheme = () => useColorScheme() |> Js.Null.toOption;
