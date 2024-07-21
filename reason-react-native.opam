@@ -34,3 +34,6 @@ build: [
   ]
 ]
 dev-repo: "git+https://github.com/riKiMasan/reason-react-native.git"
+depexts: [
+  ["react-native"] {npm-version = "0.64.0"}
+]
