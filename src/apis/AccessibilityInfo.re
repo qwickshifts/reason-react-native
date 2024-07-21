@@ -27,57 +27,58 @@ type event =
   | AccessibilityChangeEvent(accessibilityChangeEvent)
   | AccessibilityAnnouncementEvent(accessibilityAnnouncementFinishedEvent);
 
-[@mel.module "AccessibilityInfo"]
+[@mel.scope "AccessibilityInfo"] [@mel.module "react-native"]
 external addEventListener:
   (~eventName: eventName, ~handler: event => unit) => emitterSubscription =
   "addEventListener";
 
-[@mel.module "AccessibilityInfo"]
+[@mel.scope "AccessibilityInfo"] [@mel.module "react-native"]
 external announceForAccessibility: (~announcement: string) => unit =
   "announceForAccessibility";
 
 type options = {queue: option(bool)};
 
-[@mel.module "AccessibilityInfo"]
+[@mel.scope "AccessibilityInfo"] [@mel.module "react-native"]
 external announceForAccessibilityWithOptions:
   (~announcement: string, ~options: options) => unit =
   "announceForAccessibility";
 
-[@mel.module "AccessibilityInfo"]
+[@mel.scope "AccessibilityInfo"] [@mel.module "react-native"]
 external getRecommendedTimeoutMillis:
   (~originalTimeout: int) => Js.Promise.t(int) =
   "getRecommendedTimeoutMillis";
 
-[@mel.module "AccessibilityInfo"]
+[@mel.scope "AccessibilityInfo"] [@mel.module "react-native"]
 external isAccessibilityServiceEnabled: unit => Js.Promise.t(bool) =
   "isAccessibilityServiceEnabled";
 
-[@mel.module "AccessibilityInfo"]
+[@mel.scope "AccessibilityInfo"] [@mel.module "react-native"]
 external isBoldTextEnabled: unit => Js.Promise.t(bool) = "isBoldTextEnabled";
 
-[@mel.module "AccessibilityInfo"]
+[@mel.scope "AccessibilityInfo"] [@mel.module "react-native"]
 external isGrayscaleEnabled: unit => Js.Promise.t(bool) =
   "isGrayscaleEnabled";
 
-[@mel.module "AccessibilityInfo"]
+[@mel.scope "AccessibilityInfo"] [@mel.module "react-native"]
 external isInvertColorsEnabled: unit => Js.Promise.t(bool) =
   "isInvertColorsEnabled";
 
-[@mel.module "AccessibilityInfo"]
+[@mel.scope "AccessibilityInfo"] [@mel.module "react-native"]
 external isReduceMotionEnabled: unit => Js.Promise.t(bool) =
   "isReduceMotionEnabled";
 
-[@mel.module "AccessibilityInfo"]
+[@mel.scope "AccessibilityInfo"] [@mel.module "react-native"]
 external isReduceTransparencyEnabled: unit => Js.Promise.t(bool) =
   "isReduceTransparencyEnabled";
 
-[@mel.module "AccessibilityInfo"]
+[@mel.scope "AccessibilityInfo"] [@mel.module "react-native"]
 external isScreenReaderEnabled: unit => Js.Promise.t(bool) =
   "isScreenReaderEnabled";
 
+[@mel.scope "AccessibilityInfo"] [@mel.module "react-native"]
 external prefersCrossFadeTransitions: unit => Js.Promise.t(bool) =
   "prefersCrossFadeTransitions";
 
-[@mel.module "AccessibilityInfo"]
+[@mel.scope "AccessibilityInfo"] [@mel.module "react-native"]
 external setAccessibilityFocus: (~reactTag: int) => unit =
   "setAccessibilityFocus";
