@@ -2,11 +2,11 @@
 opam-version: "2.0"
 synopsis: "ReasonML Bindings for React Native"
 description: "ReasonML Bindings for React Native"
-maintainer: ["unmaintained"]
+maintainer: ["Kian Masri"]
 authors: ["idk"]
 license: "MIT"
-homepage: "https://github.com/riKiMasan/reason-react-native"
-bug-reports: "https://github.com/riKiMasan/reason-react-native/issues"
+homepage: "https://github.com/qwickshifts/reason-react-native"
+bug-reports: "https://github.com/qwickshifts/reason-react-native/issues"
 depends: [
   "dune" {>= "3.12"}
   "dot-merlin-reader"
@@ -33,7 +33,7 @@ build: [
     "@doc" {with-doc}
   ]
 ]
-dev-repo: "git+https://github.com/riKiMasan/reason-react-native.git"
+dev-repo: "git+https://github.com/qwickshifts/reason-react-native.git"
 depexts: [
   ["react-native"] {npm-version = "0.64.0"}
 ]
