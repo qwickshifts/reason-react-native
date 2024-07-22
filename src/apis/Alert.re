@@ -1,4 +1,13 @@
-type alertButtonStyle = [ | `default | `cancel | `destructive];
+type alertButtonStyle =
+  | Default
+  | Cancel
+  | Destructive;
+
+type alertType =
+  | Default
+  | PlainText
+  | SecureText
+  | LoginPassword;
 
 type alertButton = {
   text: option(string),
@@ -13,9 +22,7 @@ type alertOptions = {
   onDismiss: option(unit => unit),
 };
 
-type alertType = [ | `default | `plainText | `secureText | `loginPassword];
-
-[@mel.scope "Alert"] [@mel.module "react-native"]
+[@mel.module "react-native"] [@mel.scope "Alert"]
 external alert:
   (
     ~title: string,
@@ -26,7 +33,7 @@ external alert:
   unit =
   "alert";
 
-[@mel.scope "Alert"] [@mel.module "react-native"]
+[@mel.module "react-native"] [@mel.scope "Alert"]
 external prompt:
   (
     ~title: string,

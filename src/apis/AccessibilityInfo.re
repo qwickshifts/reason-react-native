@@ -1,16 +1,16 @@
 type emitterSubscription; // TODO: Get this from EventEmitter.re
 
 type accessibilityChangeEventName =
-  | Change // deprecated, maps to screenReaderChanged
-  | BoldTextChanged // iOS-only Event
-  | GrayscaleChanged // iOS-only Event
-  | InvertColorsChanged // iOS-only Event
+  | Change
+  | BoldTextChanged
+  | GrayscaleChanged
+  | InvertColorsChanged
   | ReduceMotionChanged
   | ScreenReaderChanged
-  | ReduceTransparencyChanged; // iOS-only Event
+  | ReduceTransparencyChanged;
 
 type accessibilityAnnouncementEventName =
-  | AnnouncementFinished; // iOS-only Event
+  | AnnouncementFinished;
 
 type eventName =
   | AccessibilityChangeEventName(accessibilityChangeEventName)
