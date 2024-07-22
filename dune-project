@@ -3,17 +3,17 @@
 (using melange 0.1)
 
 (source
- (github riKiMasan/reason-react-native))
+ (github qwickshifts/reason-react-native))
 
 (license MIT)
 
-(maintainers "unmaintained")
+(maintainers "Kian Masri")
 
 (authors "idk")
 
-(homepage https://github.com/riKiMasan/reason-react-native)
+(homepage https://github.com/qwickshifts/reason-react-native)
 
-(bug_reports https://github.com/riKiMasan/reason-react-native/issues)
+(bug_reports https://github.com/qwickshifts/reason-react-native/issues)
 
 (name reason-react-native)
 

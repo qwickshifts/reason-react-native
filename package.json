@@ -27,5 +27,8 @@
     "react-native": "0.74.3",
     "@babel/core": "^7.1.6",
     "@babel/preset-env": "^7.1.6"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
