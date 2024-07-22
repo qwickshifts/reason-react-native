@@ -2,7 +2,9 @@
 
 type registrationName = {registrationName: string};
 
-module EventMethods = (T: {type event;}) => {
+module EventMethods = (T: {
+                         type event;
+                       }) => {
   [@mel.get] [@mel.return nullable]
   external bubbles: T.event => option(bool) = "bubbles";
   [@mel.get] [@mel.return nullable]
@@ -31,7 +33,9 @@ module EventMethods = (T: {type event;}) => {
   external _type: T.event => option(string) = "type";
 };
 
-module SyntheticEvent = (T: {type _payload;}) => {
+module SyntheticEvent = (T: {
+                           type _payload;
+                         }) => {
   type t = {
     bubbles: Js.Nullable.t(bool),
     cancelable: Js.Nullable.t(bool),
@@ -52,7 +56,9 @@ module SyntheticEvent = (T: {type _payload;}) => {
   });
 };
 
-module ResponderSyntheticEvent = (T: {type _payload;}) => {
+module ResponderSyntheticEvent = (T: {
+                                    type _payload;
+                                  }) => {
   type touchBank = {
     touchActive: bool,
     startPageX: float,
@@ -200,3 +206,5 @@ type pressEvent = PressEvent.t;
 type scrollEvent = ScrollEvent.t;
 type switchChangeEvent = SwitchChangeEvent.t;
 type targetEvent = TargetEvent.t;
+
+type t;
