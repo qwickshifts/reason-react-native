@@ -1,12 +1,9 @@
-type handler = unit => unit;
+type handler('a) = unit => 'a;
 type reason = string;
 type title = string;
 
 [@mel.scope "DevSettings"] [@mel.module "react-native"]
-external addMenuItem: (title, handler) => unit = "addMenuItem";
+external addMenuItem: (title, handler('a)) => unit = "addMenuItem";
 
 [@mel.scope "DevSettings"] [@mel.module "react-native"]
-external reload: unit => unit = "reload";
-
-[@mel.scope "DevSettings"] [@mel.module "react-native"]
-external reloadWithReason: reason => unit = "reload";
+external reload: option(reason) => unit = "reload";
