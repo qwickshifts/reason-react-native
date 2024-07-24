@@ -27,6 +27,8 @@ type event =
   | AccessibilityChangeEvent(accessibilityChangeEvent)
   | AccessibilityAnnouncementEvent(accessibilityAnnouncementFinishedEvent);
 
+type options = {queue: option(bool)};
+
 [@mel.module "react-native"] [@mel.scope "AccessibilityInfo"]
 external addEventListener:
   (~eventName: eventName, ~handler: event => unit) => emitterSubscription =
@@ -35,8 +37,6 @@ external addEventListener:
 [@mel.module "react-native"] [@mel.scope "AccessibilityInfo"]
 external announceForAccessibility: (~announcement: string) => unit =
   "announceForAccessibility";
-
-type options = {queue: option(bool)};
 
 [@mel.module "react-native"] [@mel.scope "AccessibilityInfo"]
 external announceForAccessibilityWithOptions:

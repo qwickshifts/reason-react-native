@@ -1,115 +1,100 @@
+type componentProvider = unit => React.element;
+
 type appKey = string;
-type section = string;
-type taskId = float;
+
+type appConfig = {
+  appKey,
+  component: option(componentProvider),
+  run: option(unit => unit),
+  section: option(bool),
+};
+
+type runnable = {
+  component: option(string),
+  run: option(unit => unit),
+};
+
+type runnables = Js.Dict.t(runnable);
+
+type registry = {
+  runnables,
+  sections: array(string),
+};
+
+type taskId = int;
 type taskKey = string;
 
-type task('data) = 'data => Js.Promise.t(unit);
-type taskProvider('data) = unit => task('data);
+type task('a) = 'a => Js.Promise.t(unit);
+
 type taskCanceller = unit => unit;
+
 type taskCancelProvider = unit => taskCanceller;
 
-type componentProvider('a) = unit => React.component('a);
-type wrapperComponentProvider('a, 'b) = 'b => React.component('a);
+type taskProvider('a) = unit => task('a);
 
-type appParameters;
+type rootTag = int;
 
-external asAppParameters: 'a => appParameters = "%identity";
+type iPerformanceLogger; // TODO: probably should come from a different module
+type componentProviderInstrumentationHook =
+  (componentProvider, iPerformanceLogger) => React.element;
 
-type appConfig;
-
-[@mel.obj]
-external appConfig:
-  (
-    ~appKey: string,
-    ~component: componentProvider('a)=?,
-    ~run: appParameters => unit=?,
-    ~section: bool=?,
-    unit
-  ) =>
-  appConfig;
-
-type runnable('a) = {
-  .
-  "component": Js.Nullable.t(componentProvider('a)),
-  [@mel.meth] "run": appParameters => unit,
-};
-
-type registry('a) = {
-  sections: array(section),
-  runnables: Js.Dict.t(runnable('a)),
-};
+type wrapperComponentProvider('a) = 'a => React.element;
 
 [@mel.module "react-native"] [@mel.scope "AppRegistry"]
 external getAppKeys: unit => array(appKey) = "getAppKeys";
 
 [@mel.module "react-native"] [@mel.scope "AppRegistry"]
-external getRegistry: unit => registry('a) = "getRegistry";
+external getRegistry: unit => registry = "getRegistry";
 
 [@mel.module "react-native"] [@mel.scope "AppRegistry"]
-external getRunnable: appKey => option(runnable('a)) = "getRunnable";
+external getRunnable: appKey => option(runnable) = "getRunnable";
 
 [@mel.module "react-native"] [@mel.scope "AppRegistry"]
 external getSectionKeys: unit => array(string) = "getSectionKeys";
 
 [@mel.module "react-native"] [@mel.scope "AppRegistry"]
-external getSections: unit => Js.Dict.t(runnable('a)) = "getSections";
+external getSections: unit => Js.Dict.t(runnable) = "getSections";
 
-// multiple externals
 [@mel.module "react-native"] [@mel.scope "AppRegistry"]
-external registerComponent: (appKey, componentProvider('a)) => unit =
-  "registerComponent";
+external registerCancellableHeadlessTask:
+  (taskKey, taskProvider('a), taskCancelProvider) => unit =
+  "registerCancellableHeadlessTask";
 
-// multiple externals
 [@mel.module "react-native"] [@mel.scope "AppRegistry"]
-external registerComponentWithSection:
-  (appKey, componentProvider('a), section) => unit =
+external registerComponent:
+  (appKey, componentProvider, option(bool)) => string =
   "registerComponent";
 
 [@mel.module "react-native"] [@mel.scope "AppRegistry"]
 external registerConfig: array(appConfig) => unit = "registerConfig";
 
 [@mel.module "react-native"] [@mel.scope "AppRegistry"]
-external registerRunnable: (appKey, appParameters => unit) => string =
-  "registerRunnable";
+external registerHeadlessTask: (taskKey, taskProvider('a)) => unit =
+  "registerHeadlessTask";
 
 [@mel.module "react-native"] [@mel.scope "AppRegistry"]
-external registerSection: (appKey, componentProvider('a)) => unit =
+external registerRunnable: (appKey, runnable) => unit = "registerRunnable";
+
+[@mel.module "react-native"] [@mel.scope "AppRegistry"]
+external registerSection: (appKey, componentProvider) => unit =
   "registerSection";
 
 [@mel.module "react-native"] [@mel.scope "AppRegistry"]
 external runApplication: (appKey, 'a) => unit = "runApplication";
 
 [@mel.module "react-native"] [@mel.scope "AppRegistry"]
-external setWrapperComponentProvider: wrapperComponentProvider('a, 'b) => unit =
+external setComponentProviderInstrumentationHook:
+  componentProviderInstrumentationHook => unit =
+  "setComponentProviderInstrumentationHook";
+
+[@mel.module "react-native"] [@mel.scope "AppRegistry"]
+external setWrapperComponentProvider: wrapperComponentProvider('a) => unit =
   "setWrapperComponentProvider";
 
 [@mel.module "react-native"] [@mel.scope "AppRegistry"]
-external unmountApplicationComponentAtRootTag: string => unit =
-  "unmountApplicationComponentAtRootTag";
-
-// Android only
-[@mel.module "react-native"] [@mel.scope "AppRegistry"]
-external cancelHeadlessTask: (taskId, taskKey) => unit = "cancelHeadlessTask";
-
-[@mel.module "react-native"] [@mel.scope "AppRegistry"]
-external registerCancellableHeadlessTask:
-  (taskKey, taskProvider('data), taskCancelProvider) => unit =
-  "registerCancellableHeadlessTask";
-
-[@mel.module "react-native"] [@mel.scope "AppRegistry"]
-external registerHeadlessTask: (taskKey, taskProvider('data)) => unit =
-  "registerHeadlessTask";
-
-[@mel.module "react-native"] [@mel.scope "AppRegistry"]
-external startHeadlessTask: (taskId, taskKey, 'data) => unit =
+external startHeadlessTask: (taskId, taskKey, 'a) => unit =
   "startHeadlessTask";
 
-// react-native-web
-type app = {
-  .
-  "element": React.element,
-  [@mel.meth] "getStyleElement": unit => React.element,
-};
 [@mel.module "react-native"] [@mel.scope "AppRegistry"]
-external getApplication: (string, {. "initialProps": 'a}) => app =
-  "getApplication";
+external unmountApplicationComponentAtRootTag: rootTag => unit =
+  "unmountApplicationComponentAtRootTag";
