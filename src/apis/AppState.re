@@ -1,32 +1,20 @@
-type t = [ | `active | `background | `inactive | `unknown | `extension];
+type appStateStatus =
+  | Inactive
+  | Background
+  | Active;
 
-[@mel.scope "AppState"] [@mel.module "react-native"]
-external currentState: t = "currentState";
+type appStateEvent =
+  | Change(appStateStatus)
+  | MemoryWarning
+  | Blur
+  | Focus;
+
+type eventSubscription; //TODO: get this from elsewhere
 
 [@mel.scope "AppState"] [@mel.module "react-native"]
 external addEventListener:
-  (
-  [@mel.string]
-  [
-    | `change(t => unit)
-    | `focus(unit => unit)
-    | `blur(unit => unit)
-    | `memoryWarning(unit => unit)
-  ]
-  ) =>
-  unit =
+  (appStateEvent, appStateStatus => unit) => eventSubscription =
   "addEventListener";
 
-[@mel.scope "AppState"] [@mel.module "react-native"]
-external removeEventListener:
-  (
-  [@mel.string]
-  [
-    | `change(t => unit)
-    | `focus(unit => unit)
-    | `blur(unit => unit)
-    | `memoryWarning(unit => unit)
-  ]
-  ) =>
-  unit =
-  "removeEventListener";
+[@mel.module "react-native"] [@mel.scope "AppState"]
+external currentState: option(appStateStatus) = "currentState";
