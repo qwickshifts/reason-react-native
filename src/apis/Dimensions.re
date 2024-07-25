@@ -1,26 +1,21 @@
-type displayMetrics = {
+type scaledSize = {
   width: float,
   height: float,
   scale: float,
   fontScale: float,
 };
 
-type handler = {
-  screen: displayMetrics,
-  window: displayMetrics,
+type dimensionsValue = {
+  window: scaledSize,
+  screen: scaledSize,
 };
 
-[@mel.module "react-native"] [@mel.scope "Dimensions"]
-external get: [ | `window | `screen] => displayMetrics = "get";
+type emitterSubscription; // TODO: maybe comes from elsewhere
 
-type eventType = [ | `change];
-
-[@mel.module "react-native"] [@mel.scope "Dimensions"]
-external addEventListener: (eventType, handler => unit) => unit =
+[@mel.scope "Dimensions"] [@mel.module "react-native"]
+external addEventListener:
+  ([ | `change], dimensionsValue => unit) => emitterSubscription =
   "addEventListener";
-[@mel.module "react-native"] [@mel.scope "Dimensions"]
-external removeEventListener: (eventType, handler => unit) => unit =
-  "removeEventListener";
 
-[@mel.module "react-native"]
-external useWindowDimensions: unit => displayMetrics = "useWindowDimensions";
+[@mel.scope "Dimensions"] [@mel.module "react-native"]
+external get: [ | `window | `screen] => scaledSize = "get";
