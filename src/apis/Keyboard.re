@@ -1,11 +1,11 @@
-type screenRect = {
+type keyboardMetrics = {
   screenX: float,
   screenY: float,
   width: float,
   height: float,
 };
 
-type eventType = [
+type eventName = [
   | `keyboardWillShow
   | `keyboardDidShow
   | `keyboardWillHide
@@ -17,22 +17,27 @@ type eventType = [
 type keyboardEvent = {
   duration: float,
   easing: LayoutAnimation.animationType,
-  endCoordinates: screenRect,
-  startCoordinates: screenRect,
+  endCoordinates: keyboardMetrics,
+  startCoordinates: keyboardMetrics,
   isEventFromThisApp: bool,
 };
 
 type listener = keyboardEvent => unit;
 
+type eventSubscription; // TODO: get this from elsewhere
+
 [@mel.module "react-native"] [@mel.scope "Keyboard"]
-external addListener: (eventType, listener) => EventSubscription.t =
+external addListener: (eventName, listener) => eventSubscription =
   "addListener";
 
 [@mel.module "react-native"] [@mel.scope "Keyboard"]
-external removeAllListeners: eventType => unit = "removeAllListeners";
-
-[@mel.module "react-native"] [@mel.scope "Keyboard"]
-external removeListener: (eventType, listener) => unit = "removeListener";
-
-[@mel.module "react-native"] [@mel.scope "Keyboard"]
 external dismiss: unit => unit = "dismiss";
+
+[@mel.module "react-native"] [@mel.scope "Keyboard"]
+external scheduleLayoutAnimation: unit => unit = "scheduleLayoutAnimation";
+
+[@mel.module "react-native"] [@mel.scope "Keyboard"]
+external isVisible: unit => bool = "isVisible";
+
+[@mel.module "react-native"] [@mel.scope "Keyboard"]
+external metrics: unit => keyboardMetrics = "metrics";
