@@ -1,21 +1,21 @@
-/*
- https://reactnative.dev/docs/interactionmanager
- */
+type task = unit => unit;
+type promiseTask = unit => Js.Promise.t(unit);
+type handle = int;
 
-type interactionHandle;
-
+// TODO: make this actually a cancellable promise
 [@mel.module "react-native"] [@mel.scope "InteractionManager"]
-/* @todo this returns a cancellable "promise", we need to type return correctly */
-external runAfterInteractions: (unit => unit) => Js.t({.}) =
+external runAfterInteractions: task => Js.Promise.t('a) =
   "runAfterInteractions";
 
 [@mel.module "react-native"] [@mel.scope "InteractionManager"]
-external createInteractionHandle: unit => interactionHandle =
-  "createInteractionHandle";
+external runAfterInteractionsPromise: promiseTask => Js.Promise.t('a) =
+  "runAfterInteractions";
 
 [@mel.module "react-native"] [@mel.scope "InteractionManager"]
-external clearInteractionHandle: interactionHandle => unit =
-  "clearInteractionHandle";
+external createInteractionHandle: unit => handle = "createInteractionHandle";
 
 [@mel.module "react-native"] [@mel.scope "InteractionManager"]
-external setDeadline: float => unit = "setDeadline";
+external clearInteractionHandle: handle => unit = "clearInteractionHandle";
+
+[@mel.module "react-native"] [@mel.scope "InteractionManager"]
+external setDeadline: int => unit = "setDeadline";
