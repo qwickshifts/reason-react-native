@@ -1,35 +1,36 @@
-type extra;
-[@mel.obj] external extra: (~key: string, ~value: 'a) => extra;
+type emitterSubscription; // TODO: Get this from elsewhere
 
-[@mel.scope "Linking"] [@mel.module "react-native"]
-external openURL: string => Js.Promise.t(unit) = "openURL";
+[@mel.module "react-native"] [@mel.scope "Linking"]
+external addEventListener:
+  (string, {. event: {. url: string}} => unit) => emitterSubscription =
+  "addEventListener";
+let addEventListener = addEventListener("url");
 
-[@mel.scope "Linking"] [@mel.module "react-native"]
+[@mel.module "react-native"] [@mel.scope "Linking"]
 external canOpenURL: string => Js.Promise.t(bool) = "canOpenURL";
 
-[@mel.scope "Linking"] [@mel.module "react-native"]
+[@mel.module "react-native"] [@mel.scope "Linking"]
 external getInitialURL: unit => Js.Promise.t(Js.Null.t(string)) =
   "getInitialURL";
 
-[@mel.scope "Linking"] [@mel.module "react-native"]
-external openSettings: unit => Js.Promise.t('a) = "openSettings";
+[@mel.module "react-native"] [@mel.scope "Linking"]
+external openSettings: unit => Js.Promise.t(unit) = "openURL";
 
-// multiple externals
-[@mel.scope "Linking"] [@mel.module "react-native"]
-external sendIntent: string => unit = "sendIntent";
+[@mel.module "react-native"] [@mel.scope "Linking"]
+external openURL: string => Js.Promise.t('a) = "openURL";
 
-// multiple externals
-[@mel.scope "Linking"] [@mel.module "react-native"]
-external sendIntentWithExtras: (string, array(extra)) => unit = "sendIntent";
-
-type url = {url: string};
-
-type eventType = [ | `url];
-
-[@mel.scope "Linking"] [@mel.module "react-native"]
-external addEventListener: (eventType, url => unit) => unit =
-  "addEventListener";
-
-[@mel.scope "Linking"] [@mel.module "react-native"]
-external removeEventListener: (eventType, url => unit) => unit =
-  "removeEventListener";
+[@mel.module "react-native"] [@mel.scope "Linking"]
+external sendIntent:
+  (
+    string,
+    option(
+      array({
+        .
+        key: string,
+        // TODO: This is a union type, maybe a better way to represent this?
+        value: 'a,
+      }),
+    )
+  ) =>
+  Js.Promise.t(unit) =
+  "sendIntent";
