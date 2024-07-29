@@ -1,4 +1,4 @@
-type animationType = [
+type layoutAnimationType = [
   | `spring
   | `linear
   | `easeInEaseOut
@@ -7,66 +7,70 @@ type animationType = [
   | `keyboard
 ];
 
-type property = [ | `opacity | `scaleX | `scaleY | `scaleXY];
+type layoutAnimationProperty = [ | `opacity | `scaleX | `scaleY | `scaleXY];
 
-type animationConfig;
-[@mel.obj]
-external animationConfig:
-  (
-    ~duration: float=?,
-    ~delay: float=?,
-    ~springDamping: float=?,
-    ~initialVelocity: float=?,
-    ~_type: animationType=?,
-    ~property: property=?,
-    unit
-  ) =>
-  animationConfig;
+type layoutAnimationAnimationConfig = {
+  duration: option(int),
+  delay: option(int),
+  springDamping: option(float),
+  initialVelocity: option(int),
+  type_: option(layoutAnimationType),
+  property: option(layoutAnimationProperty),
+};
 
-type layoutAnimationConfig;
-[@mel.obj]
-external layoutAnimationConfig:
-  (
-    ~duration: float,
-    ~create: animationConfig=?,
-    ~update: animationConfig=?,
-    ~delete: animationConfig=?,
-    unit
-  ) =>
-  layoutAnimationConfig;
+type layoutAnimationConfig = {
+  duration: int,
+  create: option(layoutAnimationAnimationConfig),
+  update: option(layoutAnimationAnimationConfig),
+  delete: option(layoutAnimationAnimationConfig),
+};
 
-// multiple externals
 [@mel.module "react-native"] [@mel.scope "LayoutAnimation"]
-external configureNext: layoutAnimationConfig => unit = "configureNext";
-
-// multiple externals
-[@mel.module "react-native"] [@mel.scope "LayoutAnimation"]
-external configureNextWithEndCallback:
-  (layoutAnimationConfig, unit => unit) => unit =
+external configureNext:
+  (
+    layoutAnimationConfig,
+    ~onAnimationDidEnd: option(unit => unit),
+    ~onAnimationDidFail: option(unit => unit)
+  ) =>
+  unit =
   "configureNext";
 
 [@mel.module "react-native"] [@mel.scope "LayoutAnimation"]
 external create:
-  (~duration: float, ~_type: animationType, ~property: property) =>
-  layoutAnimationConfig =
+  (int, layoutAnimationType, layoutAnimationProperty) => layoutAnimationConfig =
   "create";
 
-[@mel.module "react-native"] [@mel.scope "LayoutAnimation"]
-external easeInEaseOut: unit => unit = "easeInEaseOut";
-
-[@mel.module "react-native"] [@mel.scope "LayoutAnimation"]
-external linear: unit => unit = "linear";
-
-[@mel.module "react-native"] [@mel.scope "LayoutAnimation"]
-external spring: unit => unit = "spring";
-
 module Presets = {
-  [@mel.module "react-native"] [@mel.scope ("LayoutAnimation", "Presets")]
-  external easeInEaseOut: layoutAnimationConfig = "easeInEaseOut";
-
-  [@mel.module "react-native"] [@mel.scope ("LayoutAnimation", "Presets")]
-  external linear: layoutAnimationConfig = "linear";
-
-  [@mel.module "react-native"] [@mel.scope ("LayoutAnimation", "Presets")]
-  external spring: layoutAnimationConfig = "spring";
+  let easeInEaseOut = create(300, `easeInEaseOut, `opacity);
+  let linear = create(500, `linear, `opacity);
+  let spring = {
+    duration: 700,
+    create:
+      Some({
+        duration: None,
+        delay: None,
+        springDamping: None,
+        initialVelocity: None,
+        type_: Some(`linear),
+        property: Some(`opacity),
+      }),
+    update:
+      Some({
+        duration: None,
+        delay: None,
+        springDamping: Some(0.4),
+        initialVelocity: None,
+        type_: Some(`spring),
+        property: None,
+      }),
+    delete:
+      Some({
+        duration: None,
+        delay: None,
+        springDamping: None,
+        initialVelocity: None,
+        type_: Some(`linear),
+        property: Some(`opacity),
+      }),
+  };
 };
