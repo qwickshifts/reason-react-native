@@ -14,9 +14,17 @@ type eventName = [
   | `keyboardDidChangeFrame
 ];
 
+type keyboardEventEasing = [
+  | `easeIn
+  | `easeInEaseOut
+  | `easeOut
+  | `linear
+  | `keyboard
+];
+
 type keyboardEvent = {
   duration: float,
-  easing: LayoutAnimation.animationType,
+  easing: keyboardEventEasing,
   endCoordinates: keyboardMetrics,
   startCoordinates: keyboardMetrics,
   isEventFromThisApp: bool,
