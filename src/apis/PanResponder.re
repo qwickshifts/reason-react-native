@@ -37,3 +37,35 @@ type panResponderInstance = {panHandlers: gestureResponderHandlers};
 
 [@mel.module "react-native"] [@mel.scope "PanResponder"]
 external create: panResponderCallbacks => panResponderInstance = "create";
+let create =
+    (
+      ~onMoveShouldSetPanResponder=?,
+      ~onMoveShouldSetPanResponderCapture=?,
+      ~onStartShouldSetPanResponder=?,
+      ~onStartShouldSetPanResponderCapture=?,
+      ~onPanResponderGrant=?,
+      ~onPanResponderReject=?,
+      ~onPanResponderStart=?,
+      ~onPanResponderEnd=?,
+      ~onPanResponderRelease=?,
+      ~onPanResponderMove=?,
+      ~onPanResponderTerminate=?,
+      ~onPanResponderTerminationRequest=?,
+      ~onShouldBlockNativeResponder=?,
+      (),
+    ) =>
+  create({
+    onMoveShouldSetPanResponder,
+    onMoveShouldSetPanResponderCapture,
+    onStartShouldSetPanResponder,
+    onStartShouldSetPanResponderCapture,
+    onPanResponderGrant,
+    onPanResponderReject,
+    onPanResponderStart,
+    onPanResponderEnd,
+    onPanResponderRelease,
+    onPanResponderMove,
+    onPanResponderTerminate,
+    onPanResponderTerminationRequest,
+    onShouldBlockNativeResponder,
+  });
