@@ -14,7 +14,7 @@ type layoutAnimationAnimationConfig = {
   delay: option(int),
   springDamping: option(float),
   initialVelocity: option(int),
-  type_: option(layoutAnimationType),
+  _type: option(layoutAnimationType),
   property: option(layoutAnimationProperty),
 };
 
@@ -51,7 +51,7 @@ module Presets = {
         delay: None,
         springDamping: None,
         initialVelocity: None,
-        type_: Some(`linear),
+        _type: Some(`linear),
         property: Some(`opacity),
       }),
     update:
@@ -60,7 +60,7 @@ module Presets = {
         delay: None,
         springDamping: Some(0.4),
         initialVelocity: None,
-        type_: Some(`spring),
+        _type: Some(`spring),
         property: None,
       }),
     delete:
@@ -69,7 +69,7 @@ module Presets = {
         delay: None,
         springDamping: None,
         initialVelocity: None,
-        type_: Some(`linear),
+        _type: Some(`linear),
         property: Some(`opacity),
       }),
   };

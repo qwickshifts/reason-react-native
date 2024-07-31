@@ -45,7 +45,7 @@ external prompt:
                           ],
                         )
                           =?,
-    ~type_: option(alertType)=?,
+    ~_type: option(alertType)=?,
     ~defaultValue: option(string)=?,
     ~keyboardType: option(string)=?,
     ~options: option(alertOptions)=?
