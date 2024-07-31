@@ -1,38 +1,37 @@
-type content;
-type options;
-
-[@mel.obj]
-external content:
-  (~title: string=?, ~message: string=?, ~url: string=?, unit) => content;
-
-[@mel.obj]
-external options:
-  (
-    ~subject: string=?,
-    ~tintColor: string=?,
-    ~excludedActivityTypes: array(string)=?,
-    ~dialogTitle: string=?,
-    unit
-  ) =>
-  options;
-
-type action;
-
-[@mel.module "react-native"] [@mel.scope "Share"]
-external sharedAction: action = "sharedAction";
-
-[@mel.module "react-native"] [@mel.scope "Share"]
-external dismissedAction: action = "dismissedAction";
-
-type shareResult = {
-  action,
+type shareOptions = {
+  dialogTitle: option(string),
+  excludedActivityTypes: option(array(string)),
+  tintColor: option(Style.t), // TODO: probably wrong
+  subject: option(string),
+  anchor: option(int),
+};
+type shareAction = {
+  action: [ | `sharedAction | `dismissedAction],
   activityType: option(string),
 };
 
-// multiple externals
 [@mel.module "react-native"] [@mel.scope "Share"]
-external share: content => Js.Promise.t(shareResult) = "share";
-
-// multiple externals
-[@mel.module "react-native"] [@mel.scope "Share"]
-external shareWithOptions: (content, options) => Js.Promise.t(bool) = "share";
+external share:
+  (
+    [@mel.unwrap] [
+      | `UrlRequired(
+          {
+            .
+            title: option(string),
+            url: string,
+            message: option(string),
+          },
+        )
+      | `MessageRequired(
+          {
+            .
+            title: option(string),
+            url: option(string),
+            message: string,
+          },
+        )
+    ],
+    ~options: shareOptions=?
+  ) =>
+  Js.Promise.t(shareAction) =
+  "share";
