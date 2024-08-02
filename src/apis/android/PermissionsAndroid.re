@@ -1,5 +1,5 @@
-module Permission: {
-  type t;
+module Permission = {
+  type t = string;
 
   [@mel.module "react-native"]
   [@mel.scope ("PermissionsAndroid", "PERMISSIONS")]
@@ -102,16 +102,19 @@ module Permission: {
   external writeExternalStorage: t = "WRITE_EXTERNAL_STORAGE";
 };
 
-module Result: {
+module Result = {
   type t;
 
-  [@mel.module "react-native"] [@mel.scope ("PermissionsAndroid", "RESULTS")]
+  [@mel.module "react-native"]
+  [@mel.scope ("PermissionsAndroid", "PERMISSION_REQUEST_RESULT")]
   external granted: t = "GRANTED";
 
-  [@mel.module "react-native"] [@mel.scope ("PermissionsAndroid", "RESULTS")]
+  [@mel.module "react-native"]
+  [@mel.scope ("PermissionsAndroid", "PERMISSION_REQUEST_RESULT")]
   external denied: t = "DENIED";
 
-  [@mel.module "react-native"] [@mel.scope ("PermissionsAndroid", "RESULTS")]
+  [@mel.module "react-native"]
+  [@mel.scope ("PermissionsAndroid", "PERMISSION_REQUEST_RESULT")]
   external neverAskAgain: t = "NEVER_ASK_AGAIN";
 };
 
@@ -123,28 +126,19 @@ external rationale:
     ~message: string,
     ~buttonPositive: string,
     ~buttonNegative: string=?,
-    ~buttonNeutral: string=?,
-    unit
+    ~buttonNeutral: string=?
   ) =>
   rationale;
-
-type dict;
 
 [@mel.scope "PermissionsAndroid"] [@mel.module "react-native"]
 external check: Permission.t => Js.Promise.t(bool) = "check";
 
-// multiple externals
 [@mel.scope "PermissionsAndroid"] [@mel.module "react-native"]
-external request: Permission.t => Js.Promise.t(Result.t) = "request";
-
-// multiple externals
-[@mel.scope "PermissionsAndroid"] [@mel.module "react-native"]
-external requestWithRationale:
-  (Permission.t, rationale) => Js.Promise.t(Result.t) =
+external request:
+  (Permission.t, ~rationale: rationale=?) => Js.Promise.t(Result.t) =
   "request";
 
 [@mel.scope "PermissionsAndroid"] [@mel.module "react-native"]
-external requestMultiple: array(Permission.t) => Js.Promise.t(dict) =
+external requestMultiple:
+  array(Permission.t) => Js.Promise.t(Js.Dict.t(Result.t)) =
   "requestMultiple";
-
-[@mel.get_index] external get: (dict, Permission.t) => option(Result.t);
