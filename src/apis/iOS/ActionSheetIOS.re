@@ -2,34 +2,39 @@ type options;
 [@mel.obj]
 external options:
   (
+    ~title: string=?,
     ~options: array(string),
     ~cancelButtonIndex: int=?,
     ~destructiveButtonIndex: array(int)=?,
-    ~disabledButtonIndices: int=?,
-    ~title: string=?,
     ~message: string=?,
+    ~anchor: int=?,
     ~tintColor: Color.t=?,
-    unit
+    ~cancelButtonTintColor: Color.t=?,
+    ~userInterfaceStyle: [ | `light | `dark]=?,
+    ~disabledButtonIndices: array(int)=?
   ) =>
   options;
-
-[@mel.module "react-native"] [@mel.scope "ActionSheetIOS"]
-external showActionSheetWithOptions: (options, int => unit) => unit =
-  "showActionSheetWithOptions";
 
 type shareOptions;
 [@mel.obj]
 external shareOptions:
   (
-    ~url: string=?,
     ~message: string=?,
+    ~url: string=?,
     ~subject: string=?,
-    ~excludedActivityTypes: array(string)=?,
-    unit
+    ~anchor: int=?,
+    ~excludedActivityTypes: array(string)=?
   ) =>
   shareOptions;
 
 type error = {stack: option(string)};
+
+[@mel.module "react-native"] [@mel.scope "ActionSheetIOS"]
+external showActionSheetWithOptions: (options, int => unit) => unit =
+  "showActionSheetWithOptions";
+
+[@mel.module "react-native"] [@mel.scope "ActionSheetIOS"]
+external dissmissActionSheet: unit => unit = "dismissActionSheet";
 
 [@mel.module "react-native"] [@mel.scope "ActionSheetIOS"]
 external showShareActionSheetWithOptions:
