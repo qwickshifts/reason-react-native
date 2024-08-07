@@ -1,20 +1,16 @@
 type emitterSubscription; // TODO: Get this from EventEmitter.re
 
-type accessibilityChangeEventName =
-  | Change
-  | BoldTextChanged
-  | GrayscaleChanged
-  | InvertColorsChanged
-  | ReduceMotionChanged
-  | ScreenReaderChanged
-  | ReduceTransparencyChanged;
+type accessibilityChangeEventName = [
+  | `change
+  | `boldTextChanged
+  | `grayscaleChanged
+  | `invertColorsChanged
+  | `reduceMotionChanged
+  | `screenReaderChanged
+  | `reduceTransparencyChanged
+];
 
-type accessibilityAnnouncementEventName =
-  | AnnouncementFinished;
-
-type eventName =
-  | AccessibilityChangeEventName(accessibilityChangeEventName)
-  | AccessibilityAnnouncementEventName(accessibilityAnnouncementEventName);
+type accessibilityAnnouncementEventName = [ | `announcementFinished];
 
 type accessibilityChangeEvent = bool;
 
@@ -23,29 +19,32 @@ type accessibilityAnnouncementFinishedEvent = {
   success: bool,
 };
 
-type event =
-  | AccessibilityChangeEvent(accessibilityChangeEvent)
-  | AccessibilityAnnouncementEvent(accessibilityAnnouncementFinishedEvent);
-
 type options = {queue: option(bool)};
 
 [@mel.module "react-native"] [@mel.scope "AccessibilityInfo"]
-external addEventListener:
-  (~eventName: eventName, ~handler: event => unit) => emitterSubscription =
+external addChangeEventListener:
+  (accessibilityChangeEventName, accessibilityChangeEvent => unit) =>
+  emitterSubscription =
   "addEventListener";
 
 [@mel.module "react-native"] [@mel.scope "AccessibilityInfo"]
-external announceForAccessibility: (~announcement: string) => unit =
+external addAnnouncementEventListener:
+  (
+    accessibilityAnnouncementEventName,
+    accessibilityAnnouncementFinishedEvent => unit
+  ) =>
+  emitterSubscription =
+  "addEventListener";
+
+[@mel.module "react-native"] [@mel.scope "AccessibilityInfo"]
+external announceForAccessibility: string => unit = "announceForAccessibility";
+
+[@mel.module "react-native"] [@mel.scope "AccessibilityInfo"]
+external announceForAccessibilityWithOptions: (string, options) => unit =
   "announceForAccessibility";
 
 [@mel.module "react-native"] [@mel.scope "AccessibilityInfo"]
-external announceForAccessibilityWithOptions:
-  (~announcement: string, ~options: options) => unit =
-  "announceForAccessibility";
-
-[@mel.module "react-native"] [@mel.scope "AccessibilityInfo"]
-external getRecommendedTimeoutMillis:
-  (~originalTimeout: int) => Js.Promise.t(int) =
+external getRecommendedTimeoutMillis: int => Js.Promise.t(int) =
   "getRecommendedTimeoutMillis";
 
 [@mel.module "react-native"] [@mel.scope "AccessibilityInfo"]
@@ -80,5 +79,4 @@ external prefersCrossFadeTransitions: unit => Js.Promise.t(bool) =
   "prefersCrossFadeTransitions";
 
 [@mel.module "react-native"] [@mel.scope "AccessibilityInfo"]
-external setAccessibilityFocus: (~reactTag: int) => unit =
-  "setAccessibilityFocus";
+external setAccessibilityFocus: int => unit = "setAccessibilityFocus";
