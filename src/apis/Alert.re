@@ -1,7 +1,4 @@
-type alertButtonStyle =
-  | Default
-  | Cancel
-  | Destructive;
+type alertButtonStyle = [ | `default | `cancel | `destructive];
 
 type alertType =
   | Default
@@ -26,9 +23,9 @@ type alertOptions = {
 external alert:
   (
     ~title: string,
-    ~message: option(string)=?,
-    ~buttons: option(array(alertButton))=?,
-    ~options: option(alertOptions)=?
+    ~message: string=?,
+    ~buttons: array(alertButton)=?,
+    ~options: alertOptions=?
   ) =>
   unit =
   "alert";
@@ -37,18 +34,16 @@ external alert:
 external prompt:
   (
     ~title: string,
-    ~message: option(string)=?,
-    ~callbackOrButtons: option(
-                          [
-                            | `Callback(string => unit)
-                            | `Buttons(array(alertButton))
-                          ],
-                        )
+    ~message: string=?,
+    ~callbackOrButtons: [@mel.unwrap] [
+                          | `Callback(string => unit)
+                          | `Buttons(array(alertButton))
+                        ]
                           =?,
-    ~_type: option(alertType)=?,
-    ~defaultValue: option(string)=?,
-    ~keyboardType: option(string)=?,
-    ~options: option(alertOptions)=?
+    ~_type: alertType=?,
+    ~defaultValue: string=?,
+    ~keyboardType: string=?,
+    ~options: alertOptions=?
   ) =>
   unit =
   "prompt";
