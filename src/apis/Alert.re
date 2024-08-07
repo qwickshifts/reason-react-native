@@ -25,7 +25,8 @@ external alert:
     ~title: string,
     ~message: string=?,
     ~buttons: array(alertButton)=?,
-    ~options: alertOptions=?
+    ~options: alertOptions=?,
+    unit
   ) =>
   unit =
   "alert";
@@ -43,7 +44,8 @@ external prompt:
     ~_type: alertType=?,
     ~defaultValue: string=?,
     ~keyboardType: string=?,
-    ~options: alertOptions=?
+    ~options: alertOptions=?,
+    unit
   ) =>
   unit =
   "prompt";
