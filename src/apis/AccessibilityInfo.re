@@ -1,5 +1,3 @@
-type emitterSubscription; // TODO: Get this from EventEmitter.re
-
 type accessibilityChangeEventName = [
   | `change
   | `boldTextChanged
@@ -24,7 +22,7 @@ type options = {queue: option(bool)};
 [@mel.module "react-native"] [@mel.scope "AccessibilityInfo"]
 external addChangeEventListener:
   (accessibilityChangeEventName, accessibilityChangeEvent => unit) =>
-  emitterSubscription =
+  EventSubscription.t =
   "addEventListener";
 
 [@mel.module "react-native"] [@mel.scope "AccessibilityInfo"]
@@ -33,7 +31,7 @@ external addAnnouncementEventListener:
     accessibilityAnnouncementEventName,
     accessibilityAnnouncementFinishedEvent => unit
   ) =>
-  emitterSubscription =
+  EventSubscription.t =
   "addEventListener";
 
 [@mel.module "react-native"] [@mel.scope "AccessibilityInfo"]

@@ -32,10 +32,8 @@ type keyboardEvent = {
 
 type listener = keyboardEvent => unit;
 
-type eventSubscription; // TODO: get this from elsewhere
-
 [@mel.module "react-native"] [@mel.scope "Keyboard"]
-external addListener: (eventName, listener) => eventSubscription =
+external addListener: (eventName, listener) => EventSubscription.t =
   "addListener";
 
 [@mel.module "react-native"] [@mel.scope "Keyboard"]

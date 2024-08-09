@@ -10,11 +10,9 @@ type dimensionsValue = {
   screen: scaledSize,
 };
 
-type emitterSubscription; // TODO: maybe comes from elsewhere
-
 [@mel.scope "Dimensions"] [@mel.module "react-native"]
 external addEventListener:
-  ([ | `change], dimensionsValue => unit) => emitterSubscription =
+  ([ | `change], dimensionsValue => unit) => EventSubscription.t =
   "addEventListener";
 
 [@mel.scope "Dimensions"] [@mel.module "react-native"]

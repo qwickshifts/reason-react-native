@@ -1,10 +1,8 @@
-type nativeEventSubscription; // TODO: should come from elsewhere
-
 type eventName = [ | `hardwareBackPress];
 
 [@mel.scope "BackHandler"] [@mel.module "react-native"]
 external addEventListener:
-  (eventName, unit => option(bool)) => nativeEventSubscription =
+  (eventName, unit => option(bool)) => NativeEventEmitter.subscription =
   "addEventListener";
 
 [@mel.scope "BackHandler"] [@mel.module "react-native"]

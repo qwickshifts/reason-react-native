@@ -9,11 +9,9 @@ type appStateEvent =
   | Blur
   | Focus;
 
-type eventSubscription; //TODO: get this from elsewhere
-
 [@mel.scope "AppState"] [@mel.module "react-native"]
 external addEventListener:
-  (appStateEvent, appStateStatus => unit) => eventSubscription =
+  (appStateEvent, appStateStatus => unit) => EventSubscription.t =
   "addEventListener";
 
 [@mel.module "react-native"] [@mel.scope "AppState"]
