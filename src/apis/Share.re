@@ -25,25 +25,25 @@ external t:
 external share: (t, ~options: options=?) => Js.Promise.t(action) = "share";
 
 // TODO: this isn't actually platform specific but naming is hard
-type shareAndroid = {
+type mesReq = {
   title: option(string),
   message: string,
   url: option(string),
 };
 
-type shareIOS = {
+type urlReq = {
   title: option(string),
   message: option(string),
   url: string,
 };
 
 type s =
-  | Android(shareAndroid)
-  | IOS(shareIOS);
+  | URLReq(urlReq)
+  | MessageReq(mesReq);
 
-let share =
+let share = (~options: option(options)=?) =>
   fun
-  | Android({title, message, url}) =>
-    share(t(~title, ~url, ~message=Some(message), ()))
-  | IOS({title, message, url}) =>
-    share(t(~title, ~url=Some(url), ~message, ()));
+  | MessageReq({title, message, url}) =>
+    share(t(~title, ~url, ~message=Some(message), ()), ~options?)
+  | URLReq({title, message, url}) =>
+    share(t(~title, ~url=Some(url), ~message, ()), ~options?);
