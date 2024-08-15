@@ -1,8 +1,6 @@
-type emitterSubscription; // TODO: Get this from elsewhere
-
 [@mel.module "react-native"] [@mel.scope "Linking"]
 external addEventListener:
-  (string, {. event: {. url: string}} => unit) => emitterSubscription =
+  (string, {. url: string} => unit) => EventSubscription.t =
   "addEventListener";
 let addEventListener = addEventListener("url");
 
