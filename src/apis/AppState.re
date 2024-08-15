@@ -1,4 +1,4 @@
-type t = [ | `inactive | `background | `active | `unknown | `extension];
+type t = [ | `inactive | `background | `active];
 
 type event = [ | `change | `memoryWarning | `blur | `focus];
 
