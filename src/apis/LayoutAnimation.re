@@ -34,6 +34,17 @@ external configureNext:
   ) =>
   unit =
   "configureNext";
+let configureNext =
+    (
+      ~onAnimationDidEnd: option(unit => unit),
+      ~onAnimationDidFail: option(unit => unit),
+      layoutAnimationConfig,
+    ) =>
+  configureNext(
+    layoutAnimationConfig,
+    ~onAnimationDidEnd,
+    ~onAnimationDidFail,
+  );
 
 [@mel.module "react-native"] [@mel.scope "LayoutAnimation"]
 external create:
