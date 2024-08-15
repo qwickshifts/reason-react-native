@@ -1,6 +1,7 @@
+type t = {url: string};
+
 [@mel.module "react-native"] [@mel.scope "Linking"]
-external addEventListener:
-  (string, {. url: string} => unit) => EventSubscription.t =
+external addEventListener: (string, t => unit) => EventSubscription.t =
   "addEventListener";
 let addEventListener = addEventListener("url");
 
