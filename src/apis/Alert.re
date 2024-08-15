@@ -6,12 +6,17 @@ type alertType =
   | SecureText
   | LoginPassword;
 
-type alertButton = {
-  text: option(string),
-  onPress: option(option(string) => unit),
-  isPreferred: option(bool),
-  style: option(alertButtonStyle),
-};
+type alertButton;
+[@mel.obj]
+external button:
+  (
+    ~text: string=?,
+    ~onPress: option(string) => unit=?,
+    ~isPreferred: bool=?,
+    ~style: alertButtonStyle=?,
+    unit
+  ) =>
+  alertButton;
 
 type alertOptions = {
   cancelable: option(bool),
