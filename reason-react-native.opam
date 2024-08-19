@@ -35,5 +35,5 @@ build: [
 ]
 dev-repo: "git+https://github.com/qwickshifts/reason-react-native.git"
 depexts: [
-  ["react-native"] {npm-version = "0.74.3"}
+  ["react-native"] {npm-version = "^0.74.0"}
 ]
