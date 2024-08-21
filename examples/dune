@@ -1,0 +1,7 @@
+(melange.emit
+ (target examples)
+ (libraries reason-react reason-react-native)
+ (preprocess
+  (pps melange.ppx reason-react-ppx)))
+
+(include_subdirs unqualified)

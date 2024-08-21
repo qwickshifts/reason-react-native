@@ -31,10 +31,9 @@
    (>= 5.1.0))
   (reason
    (>= 3.10.0))
-  ocaml-lsp-server ; change to (ocaml-lsp-server :with-dev-setup) when opam 2.2 releases
-  ocamlformat ; with-dev-setup
+  (ocaml-lsp-server :with-dev-setup)
+  (ocamlformat :with-dev-setup)
   reason-react
-  opam-check-npm-deps ; with-dev-setup
-  ))
+  (opam-check-npm-deps :with-dev-setup)))
 
 (generate_opam_files)

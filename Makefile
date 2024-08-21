@@ -33,7 +33,7 @@ generate-opam: ## Generate the opam file
 install: generate-opam ## Install development dependencies
 	yarn install
 	opam update
-	opam install -y . --deps-only --with-test 
+	opam install -y . --deps-only --with-test --with-dev-setup
 	opam exec opam-check-npm-deps
 
 .PHONY: build

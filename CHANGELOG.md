@@ -1,5 +1,9 @@
 # Changelog of `reason-react-native`
 
+## 0.75.0 - 2024-08-21
+
+- Full rewrite, expect everything to break
+
 ## 0.64.0 - 2021-03-19
 
 ### Breaking Changes
