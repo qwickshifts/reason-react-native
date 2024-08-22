@@ -13,10 +13,10 @@ depends: [
   "melange" {>= "3.0.0" & < "5.0.0"}
   "ocaml" {>= "5.1.0"}
   "reason" {>= "3.10.0"}
-  "ocaml-lsp-server"
-  "ocamlformat"
+  "ocaml-lsp-server" {with-dev-setup}
+  "ocamlformat" {with-dev-setup}
   "reason-react"
-  "opam-check-npm-deps"
+  "opam-check-npm-deps" {with-dev-setup}
   "odoc" {with-doc}
 ]
 build: [
