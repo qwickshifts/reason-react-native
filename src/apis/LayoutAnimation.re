@@ -19,8 +19,8 @@ type animation = {
   springDamping: option(float),
   [@mel.optional]
   initialVelocity: option(float),
-  [@mel.optional]
-  _type: option(animationType),
+  [@mel.optional] [@mel.as "type"]
+  type_: option(animationType),
   [@mel.optional]
   property: option(animationProp),
 };
@@ -59,9 +59,9 @@ module Presets = {
   let spring =
     config(
       ~duration=700.,
-      ~create=animation(~_type=`linear, ~property=`opacity, ()),
-      ~update=animation(~_type=`spring, ~springDamping=0.4, ()),
-      ~delete=animation(~_type=`linear, ~property=`opacity, ()),
+      ~create=animation(~type_=`linear, ~property=`opacity, ()),
+      ~update=animation(~type_=`spring, ~springDamping=0.4, ()),
+      ~delete=animation(~type_=`linear, ~property=`opacity, ()),
       (),
     );
 };
