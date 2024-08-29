@@ -31,6 +31,12 @@ module Systrace = Systrace;
 module Transforms = Transforms;
 module Vibration = Vibration;
 
+// Android APIs
+module BackHandler = BackHandler;
+module PermissionsAndroid = PermissionsAndroid;
+
+// IOS APIs
+
 // Components
 module Button = Button;
 module Text = Text;
