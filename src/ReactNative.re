@@ -34,6 +34,7 @@ module Vibration = Vibration;
 // Android APIs
 module BackHandler = BackHandler;
 module PermissionsAndroid = PermissionsAndroid;
+module ToastAndroid = ToastAndroid;
 
 // IOS APIs
 
