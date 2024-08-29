@@ -37,6 +37,7 @@ module PermissionsAndroid = PermissionsAndroid;
 module ToastAndroid = ToastAndroid;
 
 // IOS APIs
+module ActionSheetIOS = ActionSheetIOS;
 
 // Components
 module Button = Button;
