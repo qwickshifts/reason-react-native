@@ -39,6 +39,7 @@ module ToastAndroid = ToastAndroid;
 // IOS APIs
 module ActionSheetIOS = ActionSheetIOS;
 module DynamicColorIOS = DynamicColorIOS;
+module Settings = Settings;
 
 // Components
 module Button = Button;
