@@ -16,7 +16,12 @@ external make:
     ~accessibilityViewIsModal: bool=?,
     ~accessible: bool=?,
     ~ariaBusy: bool=?,
-    ~ariaChecked: Accessibility.Checked.t('a)=?,
+    ~ariaChecked: [
+                    | [@mel.as "true"] `true_
+                    | [@mel.as "false"] `false_
+                    | `mixed
+                  ]
+                    =?,
     ~ariaDisabled: bool=?,
     ~ariaExpanded: bool=?,
     ~ariaHidden: bool=?,

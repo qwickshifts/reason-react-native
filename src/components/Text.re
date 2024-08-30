@@ -31,7 +31,12 @@ external make:
     ~allowFontScaling: bool=?,
     ~android_hyphenationFrequency: [ | `none | `normal | `full]=?,
     ~ariaBusy: bool=?,
-    ~ariaChecked: Accessibility.Checked.t('a)=?,
+    ~ariaChecked: [
+                    | [@mel.as "true"] `true_
+                    | [@mel.as "false"] `false_
+                    | `mixed
+                  ]
+                    =?,
     ~ariaDisabled: bool=?,
     ~ariaExpanded: bool=?,
     ~ariaLabel: string=?,

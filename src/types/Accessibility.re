@@ -1,4 +1,36 @@
-module AccessibilityRole = {
+module AccessibilityRole: {
+  type t;
+
+  let adjustable: t;
+  let alert: t;
+  let button: t;
+  let checkbox: t;
+  let combobox: t;
+  let header: t;
+  let image: t;
+  let imagebutton: t;
+  let keyboardkey: t;
+  let link: t;
+  let menu: t;
+  let menubar: t;
+  let menuitem: t;
+  let none: t;
+  let progressbar: t;
+  let radio: t;
+  let radiogroup: t;
+  let scrollbar: t;
+  let search: t;
+  let spinbutton: t;
+  let summary: t;
+  let switch_: t;
+  let tab: t;
+  let tablist: t;
+  let text: t;
+  let timer: t;
+  let togglebutton: t;
+  let toolbar: t;
+  let grid: t;
+} = {
   type t = string;
 
   let adjustable = "adjustable";
@@ -40,17 +72,36 @@ module Action = {
   };
 };
 
-module Checked = {
-  type t('a) = 'a;
-  [@mel.inline]
-  let checked = true;
-  [@mel.inline]
-  let unchecked = false;
-  [@mel.inline]
-  let mixed = "mixed";
-};
-
-module Role = {
+module Role: {
+  type t;
+  let alert: t;
+  let button: t;
+  let checkbox: t;
+  let combobox: t;
+  let grid: t;
+  let heading: t;
+  let img: t;
+  let link: t;
+  let list: t;
+  let menu: t;
+  let menubar: t;
+  let menuitem: t;
+  let none: t;
+  let presentation: t;
+  let progressbar: t;
+  let radio: t;
+  let radiogroup: t;
+  let scrollbar: t;
+  let searchbox: t;
+  let slider: t;
+  let spinbutton: t;
+  let summary: t;
+  let switch_: t;
+  let tab: t;
+  let tablist: t;
+  let timer: t;
+  let toolbar: t;
+} = {
   type t = string;
   let alert = "alert";
   let button = "button";
@@ -88,7 +139,12 @@ module State = {
     (
       ~disabled: bool=?,
       ~selected: bool=?,
-      ~checked: Checked.t('a)=?,
+      ~checked: [
+                  | [@mel.as "true"] `true_
+                  | [@mel.as "false"] `false_
+                  | `mixed
+                ]
+                  =?,
       ~busy: bool=?,
       ~expanded: bool=?,
       unit
