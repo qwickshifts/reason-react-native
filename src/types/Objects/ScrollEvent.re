@@ -20,4 +20,4 @@ type nativeEvent = {
   zoomScale: option(float),
 };
 
-type t = {nativeEvent};
+type t = SyntheticEvent.t(nativeEvent);

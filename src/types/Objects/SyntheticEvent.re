@@ -1,6 +1,7 @@
 [@deriving jsProperties]
 type dispatchConfig = {registrationName: string};
 
+[@deriving jsProperties]
 type t('event) = {
   bubbles: option(bool),
   cancelable: option(bool),

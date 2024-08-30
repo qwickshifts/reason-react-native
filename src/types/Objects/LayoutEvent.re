@@ -5,7 +5,6 @@ type layout = {
   y: float,
 };
 
-type t = {
-  layout,
-  target: Js.Nullable.t(int),
-};
+type nativeEvent = {layout};
+
+type t = SyntheticEvent.t(nativeEvent);

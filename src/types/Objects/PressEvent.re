@@ -1,5 +1,5 @@
-type t = {
-  changedTouches: array(t),
+type nativeEvent = {
+  changedTouches: array(nativeEvent),
   force: float,
   identifier: int,
   locationX: float,
@@ -8,5 +8,7 @@ type t = {
   pageY: float,
   target: Js.Nullable.t(int),
   timestamp: float,
-  touches: array(t),
+  touches: array(nativeEvent),
 };
+
+type t = ResponderSyntheticEvent.t(nativeEvent);
