@@ -1,13 +1,87 @@
+type maintainVisibleContentPosition = {
+  minIndexForVisible: int,
+  autoscrollToTopThreshold: float,
+};
 [@react.component] [@mel.module "react-native"]
 external make:
   (
     ~ref: Ref.t=?,
     ~children: React.element=?,
-    // Props
-    ~animating: bool=?,
-    ~color: Color.t=?,
-    ~hidesWhenStopped: bool=?,
-    ~size: [ | `small | `large]=?,
+    // ScrollView Props
+    ~_StickyHeaderComponent: React.element=?,
+    ~alwaysBounceHorizontal: bool=?,
+    ~alwaysBounceVertical: bool=?,
+    ~automaticallyAdjustContentInsets: bool=?,
+    ~automaticallyAdjustKeyboardInsets: bool=?,
+    ~automaticallyAdjustsScrollIndicatorInsets: bool=?,
+    ~bounces: bool=?,
+    ~bouncesZoom: bool=?,
+    ~canCancelContentTouches: bool=?,
+    ~centerContent: bool=?,
+    ~contentContainerStyle: Style.t=?,
+    ~contentInset: Inset.t=?,
+    ~contentInsetAdjustmentBehavior: [
+                                       | `automatic
+                                       | `scrollableAxes
+                                       | `never
+                                       | `always
+                                     ]
+                                       =?,
+    ~contentOffset: Point.t=?,
+    ~decelerationRate: [ | `normal | `fast]=?,
+    ~directionalLockEnabled: bool=?,
+    ~disableIntervalMomentum: bool=?,
+    ~disableScrollViewPanResponder: bool=?,
+    ~endFillColor: Color.t=?,
+    ~fadingEdgeLength: float=?,
+    ~horizontal: bool=?,
+    ~indicatorStyle: [ | `default | `black | `white]=?,
+    ~invertStickyHeaders: bool=?,
+    ~keyboardDismissMode: [@mel.string] [
+                            | `none
+                            | [@mel.as "on-drag"] `onDrag
+                            | `interactive
+                          ]
+                            =?,
+    ~keyboardShouldPersistTaps: [ | `never | `always | `handled]=?,
+    ~maintainVisibleContentPosition: maintainVisibleContentPosition=?,
+    ~maximumZoomScale: float=?,
+    ~minimumZoomScale: float=?,
+    ~nestedScrollEnabled: bool=?,
+    ~onContentSizeChange: (float, float) => unit=?,
+    ~onMomentumScrollBegin: ScrollEvent.t => unit=?,
+    ~onMomentumScrollEnd: ScrollEvent.t => unit=?,
+    ~onScroll: ScrollEvent.t => unit=?,
+    ~onScrollBeginDrag: ScrollEvent.t => unit=?,
+    ~onScrollEndDrag: ScrollEvent.t => unit=?,
+    ~onScrollToTop: ScrollEvent.t => unit=?,
+    ~overScrollMode: [ | `auto | `always | `never]=?,
+    ~pagingEnabled: bool=?,
+    ~persistentScrollbar: bool=?,
+    ~pinchGestureEnabled: bool=?,
+    ~refreshControl: React.element=?,
+    ~removeClippedSubviews: bool=?,
+    ~scrollEnabled: bool=?,
+    ~scrollEventThrottle: float=?,
+    ~scrollIndicatorInsets: Inset.t=?,
+    ~scrollPerfTag: string=?,
+    ~scrollToOverflowEnabled: bool=?,
+    ~scrollsToTop: bool=?,
+    ~showsHorizontalScrollIndicator: bool=?,
+    ~showsVerticalScrollIndicator: bool=?,
+    ~snapToAlignment: [@mel.string] [
+                        | `start
+                        | `center
+                        | [@mel.as "end"] `end_
+                      ]
+                        =?,
+    ~snapToEnd: bool=?,
+    ~snapToInterval: float=?,
+    ~snapToOffsets: array(float)=?,
+    ~snapToStart: bool=?,
+    ~stickyHeaderHiddenOnScroll: bool=?,
+    ~stickyHeaderIndices: array(int)=?,
+    ~zoomScale: float=?,
     // View Props
     ~accessibilityActions: array(Accessibility.Action.t)=?,
     ~accessibilityElementsHidden: bool=?,
@@ -90,4 +164,4 @@ external make:
     unit
   ) =>
   React.element =
-  "ActivityIndicator";
+  "ScrollView";

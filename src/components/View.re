@@ -1,9 +1,3 @@
-type hitSlop = {
-  top: float,
-  left: float,
-  bottom: float,
-  right: float,
-};
 [@react.component] [@mel.module "react-native"]
 external make:
   (
@@ -37,7 +31,7 @@ external make:
     ~ariaValuetext: string=?,
     ~collapsable: bool=?,
     ~focusable: bool=?,
-    ~hitSlop: hitSlop=?,
+    ~hitSlop: Inset.t=?,
     ~id: string=?,
     ~importantForAccessibility: [@mel.string] [
                                   | `auto
