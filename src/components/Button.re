@@ -1,7 +1,7 @@
 [@react.component] [@mel.module "react-native"]
 external make:
   (
-    ~ref: Ref.t=?,
+    ~ref: Ref.t('ref)=?,
     ~children: React.element=?,
     ~onPress: PressEvent.t => unit,
     ~title: string,

@@ -5,7 +5,7 @@ type maintainVisibleContentPosition = {
 [@react.component] [@mel.module "react-native"]
 external make:
   (
-    ~ref: Ref.t=?,
+    ~ref: Ref.t('ref)=?,
     ~children: React.element=?,
     // ScrollView Props
     ~_StickyHeaderComponent: React.element=?,
