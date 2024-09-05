@@ -43,6 +43,7 @@ module Settings = Settings;
 
 // Components
 module Button = Button;
+module ScrollView = ScrollView;
 module Text = Text;
 module View = View;
 
