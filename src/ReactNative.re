@@ -56,4 +56,4 @@ module ReactNode = ReactNode;
 module Rect = Rect;
 module Ref = Ref;
 module Style = Style;
-module ViewToken = ViewToken;
+module Viewability = Viewability;
