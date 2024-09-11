@@ -13,7 +13,7 @@ external getInitialURL: unit => Js.Promise.t(Js.Null.t(string)) =
   "getInitialURL";
 
 [@mel.module "react-native"] [@mel.scope "Linking"]
-external openSettings: unit => Js.Promise.t(unit) = "openURL";
+external openSettings: unit => Js.Promise.t(unit) = "openSettings";
 
 [@mel.module "react-native"] [@mel.scope "Linking"]
 external openURL: string => Js.Promise.t(unit) = "openURL";
