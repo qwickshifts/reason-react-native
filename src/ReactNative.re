@@ -42,13 +42,17 @@ module DynamicColorIOS = DynamicColorIOS;
 module Settings = Settings;
 
 // Components
+module ActivityIndicator = ActivityIndicator;
 module Button = Button;
+module FlatList = FlatList;
 module ScrollView = ScrollView;
 module Text = Text;
 module View = View;
+module VirtualizedList = VirtualizedList;
 
 // Types
 module Accessibility = Accessibility;
+module Color = Color;
 module EventSubscription = EventSubscription;
 module LayoutEvent = LayoutEvent;
 module NativeEventSubscription = NativeEventSubscription;

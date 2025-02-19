@@ -1,1 +1,1 @@
-type t('a) = array('a);
+type t('a) = 'a;
